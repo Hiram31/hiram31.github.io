@@ -683,7 +683,7 @@ function App() {
                         >
                           <p className="card-note">{item.citation}</p>
                           <span className="card-link-icon repo-link-arrow" aria-hidden="true">
-                            ↗
+                            View
                           </span>
                         </a>
                       ) : (
@@ -926,7 +926,7 @@ function App() {
                           </header>
                           <p className="card-note">{item.summary}</p>
                           <span className="card-link-icon repo-link-arrow" aria-hidden="true">
-                            ↗
+                            View
                           </span>
                         </a>
                       ) : (
@@ -973,7 +973,7 @@ function App() {
                   <div className="paper-head">
                     <p>{repo.language ?? "Code"}</p>
                     <span className="repo-link-arrow" aria-hidden="true">
-                      ↗
+                      View
                     </span>
                   </div>
                   <h3>{repo.name}</h3>
@@ -999,7 +999,7 @@ function App() {
                   <div className="paper-head">
                     <p>Repository</p>
                     <span className="repo-link-arrow" aria-hidden="true">
-                      ↗
+                      View
                     </span>
                   </div>
                   <h3>{project.name}</h3>

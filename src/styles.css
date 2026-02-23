@@ -569,8 +569,11 @@ main {
 }
 
 .interactive-card-link {
-  display: block;
-  padding-right: 2.4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 0.55rem;
+  row-gap: 0.55rem;
+  align-items: start;
   transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
@@ -586,10 +589,19 @@ main {
   border-color: #7ea8c0;
 }
 
+.interactive-card-link > :not(.card-link-icon) {
+  grid-column: 1;
+}
+
+.interactive-card-link > .card-link-icon {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  align-self: start;
+}
+
 .card-link-icon {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.8rem;
+  position: static;
 }
 
 .card-status-pill {
@@ -743,17 +755,14 @@ main {
 }
 
 .repo-link-arrow {
-  min-width: 1.75rem;
-  padding: 0.1rem 0.48rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: fit-content;
+  font-size: 0.78rem;
+  padding: 0.18rem 0.6rem;
   border: 1px solid #b7ccda;
   border-radius: 999px;
-  background: #fff;
   color: var(--accent);
 }
 
