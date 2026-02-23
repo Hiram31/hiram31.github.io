@@ -218,18 +218,28 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const revealElements = Array.from(document.querySelectorAll(".reveal"));
+    if (revealElements.length === 0) {
+      return undefined;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      revealElements.forEach((element) => element.classList.add("is-visible"));
+      return undefined;
+    }
+
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries, activeObserver) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
+            activeObserver.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.01 }
     );
 
-    const revealElements = document.querySelectorAll(".reveal");
     revealElements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
