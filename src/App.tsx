@@ -448,7 +448,7 @@ function App() {
         <section className="hero reveal" id="about">
           <div className="hero-top">
             <div className="hero-copy">
-              <p className="eyebrow">Academic Website</p>
+              <p className="eyebrow">Academic Homepage</p>
               <h1>{profile.headline}</h1>
               <p className="subheadline">{profile.subheadline}</p>
               <div className="hero-focus-tags">
