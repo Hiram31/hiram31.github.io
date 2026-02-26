@@ -367,6 +367,11 @@ export const profile = {
     },
     {
       citation:
+        "EngDraw-VQA: An Agent-Based Framework for Automated Visual Question Answering Generation From Engineering Drawings (Accepted). Manufacturing Science and Engineering Conference (MSEC) 2026.",
+      href: "#"
+    },
+    {
+      citation:
         "Gupta, D., Camba, J. D., Fuerst, T., and Zhou, J. (2025). WIP: An AI-Based Virtual Assistant for Supporting a Large Engineering Course. 2025 IEEE Frontiers in Education Conference (FIE).",
       href: "https://doi.org/10.1109/FIE63693.2025.11328408"
     },
@@ -403,12 +408,6 @@ export const profile = {
       title:
         "EngDraw-Extractor: A Multi-Agent System for Information Extraction from 2D Engineering Drawings",
       venue: "IDETC-CIE 2026",
-      status: "Under Review"
-    },
-    {
-      title:
-        "AutoDrawVQA: Automated Visual Question Answering Generation from Engineering Drawings",
-      venue: "MSEC 2026",
       status: "Under Review"
     },
     {
