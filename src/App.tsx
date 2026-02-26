@@ -69,6 +69,11 @@ const navItems = [
 ];
 
 const featuredRepoNames = ["CADialogue"];
+const mapMyVisitorsScriptSrc =
+  "https://mapmyvisitors.com/map.js?d=vpkCxKQ2ByhD-7oXnjNhlxPOH0Rxuf_I3M93SurEQbA&cl=ffffff&w=a";
+const mapMyVisitorsHref = "https://mapmyvisitors.com/web/1c2uq";
+const mapMyVisitorsImageSrc =
+  "https://mapmyvisitors.com/map.png?d=vpkCxKQ2ByhD-7oXnjNhlxPOH0Rxuf_I3M93SurEQbA&cl=ffffff";
 
 const parsePeriodPart = (value: string, fallbackMonth: number) => {
   const [yearPart, monthPart] = value.trim().split(".");
@@ -174,6 +179,7 @@ function App() {
   const [repoError, setRepoError] = useState("");
   const [loadingRepos, setLoadingRepos] = useState(true);
   const [activePreview, setActivePreview] = useState<MediaPreview | null>(null);
+  const [mapWidgetLoaded, setMapWidgetLoaded] = useState(false);
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -259,6 +265,51 @@ function App() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [activePreview]);
+
+  useEffect(() => {
+    const host = document.getElementById("mapmyvisitors-host");
+    if (!host) {
+      return undefined;
+    }
+
+    setMapWidgetLoaded(false);
+    host.innerHTML = "";
+
+    const renderChecks: Array<ReturnType<typeof window.setTimeout>> = [];
+    const checkRendered = () => {
+      const renderedMap = host.querySelector(
+        "#mapmyvisitors-widget .jvectormap-container"
+      );
+      if (renderedMap) {
+        setMapWidgetLoaded(true);
+      }
+    };
+
+    const observer = new MutationObserver(() => {
+      checkRendered();
+    });
+    observer.observe(host, { childList: true, subtree: true });
+
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.id = "mapmyvisitors";
+    script.src = mapMyVisitorsScriptSrc;
+    script.async = true;
+    script.onload = () => {
+      renderChecks.push(window.setTimeout(checkRendered, 300));
+      renderChecks.push(window.setTimeout(checkRendered, 1200));
+    };
+    script.onerror = () => setMapWidgetLoaded(false);
+    host.appendChild(script);
+
+    return () => {
+      observer.disconnect();
+      renderChecks.forEach((timeoutId) => window.clearTimeout(timeoutId));
+      script.onload = null;
+      script.onerror = null;
+      host.innerHTML = "";
+    };
+  }, []);
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
   const educationByMostRecent = useMemo(
@@ -1031,6 +1082,37 @@ function App() {
             ) : (
               <a href={`mailto:${profile.email}`}>{profile.email}</a>
             )}
+          </div>
+        </section>
+
+        <section className="section reveal" id="visitors">
+          <div className="timeline-card visitor-widget-card">
+            <div
+              id="mapmyvisitors-host"
+              className="mapmyvisitors-host"
+              aria-label="Website visitor map widget"
+            ></div>
+            {!mapWidgetLoaded ? (
+              <a
+                href={mapMyVisitorsHref}
+                target="_blank"
+                rel="noreferrer"
+                className="visitor-map-fallback"
+                title="Visit tracker"
+                aria-label="Open map visitor tracker"
+              >
+                <img
+                  src={mapMyVisitorsImageSrc}
+                  alt="World map visitor tracker"
+                  loading="lazy"
+                />
+              </a>
+            ) : null}
+            <noscript>
+              <a href={mapMyVisitorsHref} title="Visit tracker">
+                <img src={mapMyVisitorsImageSrc} alt="World map visitor tracker" />
+              </a>
+            </noscript>
           </div>
         </section>
       </main>
