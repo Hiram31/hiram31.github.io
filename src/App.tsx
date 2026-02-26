@@ -70,7 +70,7 @@ const navItems = [
 
 const featuredRepoNames = ["CADialogue"];
 const mapMyVisitorsScriptSrc =
-  "https://mapmyvisitors.com/map.js?d=vpkCxKQ2ByhD-7oXnjNhlxPOH0Rxuf_I3M93SurEQbA&cl=ffffff&w=a";
+  "https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=vpkCxKQ2ByhD-7oXnjNhlxPOH0Rxuf_I3M93SurEQbA";
 const mapMyVisitorsHref = "https://mapmyvisitors.com/web/1c2uq";
 const mapMyVisitorsImageSrc =
   "https://mapmyvisitors.com/map.png?d=vpkCxKQ2ByhD-7oXnjNhlxPOH0Rxuf_I3M93SurEQbA&cl=ffffff";
