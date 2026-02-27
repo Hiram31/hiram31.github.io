@@ -674,6 +674,77 @@ main {
   gap: 0.7rem;
 }
 
+.manuscript-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 251, 255, 0.9) 100%);
+  border-color: #c8d9e5;
+  box-shadow: 0 10px 22px rgba(18, 54, 79, 0.08);
+}
+
+.manuscript-card-review {
+  background:
+    linear-gradient(180deg, rgba(250, 255, 252, 0.98) 0%, rgba(236, 248, 242, 0.9) 100%);
+}
+
+.manuscript-card-prep {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, 0.98) 0%, rgba(250, 241, 222, 0.92) 100%);
+}
+
+.manuscript-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.manuscript-card-count {
+  margin: 0;
+  min-width: 1.7rem;
+}
+
+.manuscript-list {
+  list-style: none;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.manuscript-item {
+  border: 1px solid #d7e3eb;
+  border-radius: 10px;
+  padding: 0.7rem 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.manuscript-copy {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.manuscript-line {
+  margin: 0;
+  color: #1c3d4f;
+  line-height: 1.35;
+}
+
+.manuscript-title {
+  font-weight: 400;
+}
+
+.manuscript-venue {
+  color: #356179;
+}
+
+.manuscript-venue-line {
+  font-size: 0.9rem;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1144,6 +1215,11 @@ footer p {
   .proceeding-group {
     grid-template-columns: 1fr;
     gap: 0.38rem;
+  }
+
+  .manuscript-item {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .proceeding-year {

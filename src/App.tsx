@@ -752,26 +752,41 @@ function App() {
 
           <h3 className="subsection-title">Manuscript Pipeline</h3>
           <div className="split-grid">
-            <article className="timeline-card">
-              <header>
+            <article className="timeline-card manuscript-card manuscript-card-review">
+              <header className="manuscript-card-head">
                 <h3>Under Review</h3>
+                <span className="card-status-pill manuscript-card-count">
+                  {profile.manuscriptsUnderReview.length}
+                </span>
               </header>
-              <ul>
+              <ul className="manuscript-list">
                 {profile.manuscriptsUnderReview.map((item) => (
-                  <li key={item.title}>
-                    {item.title} | {item.venue}
+                  <li key={item.title} className="manuscript-item">
+                    <div className="manuscript-copy">
+                      <p className="manuscript-line manuscript-title">{item.title}</p>
+                      <p className="manuscript-line manuscript-venue manuscript-venue-line">
+                        {item.venue}
+                      </p>
+                    </div>
                   </li>
                 ))}
               </ul>
             </article>
-            <article className="timeline-card">
-              <header>
+            <article className="timeline-card manuscript-card manuscript-card-prep">
+              <header className="manuscript-card-head">
                 <h3>In Preparation</h3>
+                <span className="card-status-pill manuscript-card-count">
+                  {profile.manuscriptsInPreparation.length}
+                </span>
               </header>
-              <ul>
+              <ul className="manuscript-list">
                 {profile.manuscriptsInPreparation.map((item) => (
-                  <li key={item.title}>
-                    {item.title} | {item.venue}
+                  <li key={item.title} className="manuscript-item">
+                    <p className="manuscript-line">
+                      <span className="manuscript-title">{item.title}</span>
+                      <span aria-hidden="true"> | </span>
+                      <span className="manuscript-venue">{item.venue}</span>
+                    </p>
                   </li>
                 ))}
               </ul>

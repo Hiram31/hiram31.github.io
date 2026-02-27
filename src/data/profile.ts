@@ -394,6 +394,12 @@ export const profile = {
   manuscriptsUnderReview: [
     {
       title:
+        "CADThread: A Multimodal Engineering Design Dataset Linking Feature-Based Parametric CAD, Geometry, and Drawings",
+      venue: "Journal of Mechanical Design",
+      status: "Under Review"
+    },
+    {
+      title:
         "GenAI-Aided Design in Engineering Education: Competencies, Challenges, and Opportunities",
       venue: "Computer-Aided Design",
       status: "Under Review"
@@ -418,12 +424,6 @@ export const profile = {
     }
   ] as ManuscriptItem[],
   manuscriptsInPreparation: [
-    {
-      title:
-        "ParamDrawCAD: A Multimodal Dataset Linking Parametric CAD Models, Geometry, and Engineering Drawings",
-      venue: "Planned Submission",
-      status: "In Preparation"
-    },
     {
       title:
         "EngDraw-Annotator: Schema-Aware, LLM-Assisted Annotation for Engineering Drawings",
