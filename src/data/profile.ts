@@ -669,6 +669,7 @@ export const profile = {
         "Expert Systems with Applications",
         "IEEE Transactions on Computational Social Systems",
         "Image and Vision Computing",
+        "Results in Engineering",
         "SoftwareX"
       ]
     }
