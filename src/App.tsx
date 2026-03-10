@@ -501,7 +501,9 @@ function App() {
             <div className="hero-copy">
               <p className="eyebrow">Academic Homepage</p>
               <h1>{profile.headline}</h1>
-              <p className="subheadline">{profile.subheadline}</p>
+              {profile.subheadline ? (
+                <p className="subheadline">{profile.subheadline}</p>
+              ) : null}
               <div className="hero-focus-tags">
                 {profile.focusAreas.map((area) => (
                   <span key={area}>{area}</span>

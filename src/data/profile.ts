@@ -115,7 +115,7 @@ export type AwardItem = {
 export const profile = {
   name: "Jiwei Zhou, Ph.D.",
   headline: "Computer Vision Scientist and Applied AI Researcher",
-  subheadline: "Ph.D., Purdue University",
+  subheadline: "",
   focusAreas: [
     "Applied AI",
     "Computer Vision",
