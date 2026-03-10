@@ -355,15 +355,6 @@ main {
   color: #1b4158;
 }
 
-.timeline-order-note {
-  margin: 0 0 0.6rem;
-  font-size: 0.74rem;
-  color: var(--muted);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
 .timeline {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -371,6 +362,9 @@ main {
 }
 
 .cv-timeline {
+  --timeline-date-column: 148px;
+  --timeline-node-size: 16px;
+  --timeline-node-offset: 0.24rem;
   position: relative;
   display: grid;
   gap: 0.8rem;
@@ -380,21 +374,22 @@ main {
 .cv-timeline::before {
   content: "";
   position: absolute;
-  top: 0.2rem;
-  bottom: 0.2rem;
-  left: calc(148px + 8px);
+  top: calc(var(--timeline-node-offset) + (var(--timeline-node-size) / 2));
+  bottom: calc(var(--timeline-node-offset) + (var(--timeline-node-size) / 2));
+  left: calc(var(--timeline-date-column) + (var(--timeline-node-size) / 2));
   width: 2px;
   background: #c6d7e2;
 }
 
 .cv-entry {
   display: grid;
-  grid-template-columns: 148px 16px minmax(0, 1fr);
+  grid-template-columns: var(--timeline-date-column) var(--timeline-node-size) minmax(0, 1fr);
   gap: 0.7rem;
   align-items: start;
 }
 
 .cv-date {
+  margin: 0;
   font-size: 0.86rem;
   font-weight: 600;
   color: #2f566e;
@@ -403,13 +398,25 @@ main {
 }
 
 .cv-track-node {
-  width: 16px;
-  height: 16px;
+  width: var(--timeline-node-size);
+  height: var(--timeline-node-size);
   border-radius: 999px;
   background: #f1f8fc;
   border: 3px solid #6d9fbb;
-  margin-top: 0.24rem;
+  margin-top: var(--timeline-node-offset);
   z-index: 1;
+}
+
+.cv-timeline-single::before {
+  display: none;
+}
+
+.cv-timeline-single .cv-date {
+  padding-top: 0.25rem;
+}
+
+.cv-timeline-single .cv-track-node {
+  margin-top: var(--timeline-node-offset);
 }
 
 .cv-card {
@@ -1134,12 +1141,8 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  .cv-timeline::before {
-    left: calc(128px + 8px);
-  }
-
-  .cv-entry {
-    grid-template-columns: 128px 16px minmax(0, 1fr);
+  .cv-timeline {
+    --timeline-date-column: 128px;
   }
 
   .proceeding-group {

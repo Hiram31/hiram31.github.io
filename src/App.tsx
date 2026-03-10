@@ -575,7 +575,6 @@ function App() {
             <p className="section-eyebrow">Education</p>
             <h2>Academic Foundation</h2>
           </div>
-          <p className="timeline-order-note">Most recent first</p>
           <div className="cv-timeline education-timeline">
             {educationByMostRecent.map((item) => (
               <article key={`${item.degree}-${item.period}`} className="cv-entry">
@@ -602,8 +601,11 @@ function App() {
             <p className="section-eyebrow">Appointments</p>
             <h2>Research and Professional Experience</h2>
           </div>
-          <p className="timeline-order-note">Most recent first</p>
-          <div className="cv-timeline appointments-timeline">
+          <div
+            className={`cv-timeline appointments-timeline${
+              appointmentsByMostRecent.length <= 1 ? " cv-timeline-single" : ""
+            }`}
+          >
             {appointmentsByMostRecent.map((item) => (
               <article key={`${item.role}-${item.period}`} className="cv-entry">
                 <p className="cv-date">{item.period}</p>
@@ -719,7 +721,6 @@ function App() {
           </div>
 
           <h3 className="subsection-title">Peer-Reviewed Conference Proceedings</h3>
-          <p className="timeline-order-note">Most recent first</p>
           <div className="proceedings-list">
             {conferenceProceedingsByYear.map((group) => (
               <section key={`proceedings-${group.yearLabel}`} className="proceeding-group">
@@ -803,7 +804,6 @@ function App() {
           </div>
 
           <h3 className="subsection-title">Conference Presentations</h3>
-          <p className="timeline-order-note">Most recent first</p>
           <div className="proceedings-list">
             {conferencePresentationsByYear.map((group) => (
               <section
@@ -832,7 +832,6 @@ function App() {
           </div>
 
           <h3 className="subsection-title">Public Speaking and Outreach</h3>
-          <p className="timeline-order-note">Most recent first</p>
           <div className="proceedings-list">
             {outreachByYear.map((group) => (
               <section key={`outreach-${group.yearLabel}`} className="proceeding-group">
@@ -912,7 +911,6 @@ function App() {
           </div>
 
           <h3 className="subsection-title">Leadership Experience</h3>
-          <p className="timeline-order-note">Most recent first</p>
           <div className="cv-timeline">
             {leadershipByMostRecent.map((item) => (
               <article key={`${item.role}-${item.period}`} className="cv-entry">
@@ -936,7 +934,6 @@ function App() {
           </div>
 
           <h3 className="subsection-title">Certification and Teaching Experience</h3>
-          <p className="timeline-order-note">Most recent first</p>
           <div className="cv-timeline">
             {certificationsByMostRecent.map((item) => (
               <article key={`${item.title}-${item.period}`} className="cv-entry">
@@ -973,7 +970,6 @@ function App() {
           </div>
 
           <h3 className="subsection-title">Media Coverage</h3>
-          <p className="timeline-order-note">Most recent first</p>
           <div className="proceedings-list">
             {mediaByYear.map((group) => (
               <section key={`media-${group.yearLabel}`} className="proceeding-group">
