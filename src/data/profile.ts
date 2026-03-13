@@ -395,7 +395,7 @@ export const profile = {
     {
       title:
         "CADThread: A Multimodal Engineering Design Dataset Linking Feature-Based Parametric CAD, Geometry, and Drawings",
-      venue: "Journal of Mechanical Design",
+      venue: "Journal of Computing and Information Science in Engineering",
       status: "Under Review"
     },
     {
