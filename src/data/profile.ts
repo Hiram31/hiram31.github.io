@@ -20,6 +20,7 @@ export type AppointmentItem = {
   institution: string;
   location: string;
   period: string;
+  countsTowardIndustryExperience?: boolean;
   highlights: string[];
   stack: string[];
 };
@@ -40,14 +41,20 @@ export type PublicationItem = {
   media: PublicationMediaItem[];
 };
 
+export type JournalArticleItem = {
+  citation: string;
+  href: string;
+};
+
 export type HighlightStat = {
   label: string;
-  value: string;
+  value?: string;
 };
 
 export type ProceedingItem = {
   citation: string;
-  href: string;
+  href?: string;
+  status?: "Accepted";
 };
 
 export type ManuscriptItem = {
@@ -134,14 +141,14 @@ export const profile = {
     { label: "CV", href: "/CV_latest.pdf" }
   ] as LinkItem[],
   stats: [
-    { label: "Peer-Reviewed Publications", value: "13" },
-    { label: "Journal Articles", value: "6" },
-    { label: "Conference Proceedings", value: "7" },
-    { label: "Manuscripts Pipeline", value: "7" },
-    { label: "Conference Presentations", value: "6" },
-    { label: "Public Outreach Talks", value: "7" },
-    { label: "Funding and Grants", value: "3" },
-    { label: "Industry Experience", value: "13+ years" }
+    { label: "Peer-Reviewed Publications"},
+    { label: "Journal Articles"},
+    { label: "Conference Proceedings"},
+    { label: "Active Manuscripts"},
+    { label: "Conference Presentations"},
+    { label: "Public Outreach Talks"},
+    { label: "Funding and Grants"},
+    { label: "Industry Experience"}
   ] as HighlightStat[],
   research: [
     {
@@ -200,6 +207,7 @@ export const profile = {
       institution: "Heliponix LLC",
       location: "Evansville, IN, USA",
       period: "2023.6 - Present",
+      countsTowardIndustryExperience: true,
       highlights: [
         "Conduct interdisciplinary research in applied AI to drive innovation in engineering design, smart manufacturing, and technology education.",
         "Lead deployment of AI-powered vision systems in IoT-enabled smart appliances for real-time crop monitoring and autonomous decision-making.",
@@ -226,6 +234,7 @@ export const profile = {
       institution: "Siemens Industry Software",
       location: "Shanghai, China",
       period: "2012.7 - 2019.7",
+      countsTowardIndustryExperience: true,
       highlights: [
         "Led Siemens NX CAD testing and development quality activities, improving product reliability and reducing reported issues by 15%.",
         "Designed automated test workflows and achieved over 95% code coverage.",
@@ -239,6 +248,7 @@ export const profile = {
       institution: "Siemens Industry Software",
       location: "Shanghai, China",
       period: "2011.7 - 2012.7",
+      countsTowardIndustryExperience: true,
       highlights: [
         "Tested NX Ship Manufacture modules to improve ship product quality.",
         "Created more than 300 reusable CAD parts to support drawing automation in shipbuilding workflows."
@@ -349,45 +359,77 @@ export const profile = {
       ]
     }
   ] as PublicationItem[],
+  journalArticles: [
+    {
+      citation:
+        "Zhou, J., Camba, J. D., Company, P. (2026). CADialogue: A Multimodal LLM-Powered Conversational Assistant for Intuitive Parametric CAD Modeling. Computer-Aided Design, 191, 104006.",
+      href: "https://doi.org/10.1016/j.cad.2025.104006"
+    },
+    {
+      citation:
+        "Zhou, J., & Camba, J. D. (2025). The status, evolution, and future challenges of multimodal large language models (LLMs) in parametric CAD. Expert Systems with Applications, 282, 127520.",
+      href: "https://doi.org/10.1016/j.eswa.2025.127520"
+    },
+    {
+      citation:
+        "Zhou, J., Camba, J. D., Li, X. (2025). An Approach to Drawing Automation of Ship Stiffeners in the Shipbuilding Industry. Computer-Aided Design and Applications, 22(1), 26-41.",
+      href: "https://doi.org/10.14733/cadaps.2025.25-41"
+    },
+    {
+      citation:
+        "Zhou, J., & Hartman, N. W. (2024). A Model-Based Visual Inspection System (MBVIS) for Critical Plastic Bottle Dimensional Measurements. Computer-Aided Design and Applications, 21(2), 270-280.",
+      href: "https://doi.org/10.14733/cadaps.2024.270-280"
+    },
+    {
+      citation:
+        "Zhou, J., & Hartman, N. W. (2024). Development and Evaluation of a Vision Inspection System for Plastic Bottle Measurement. Advances in Science and Technology, 149, 41-50.",
+      href: "https://doi.org/10.4028/p-HPT9vc"
+    },
+    {
+      citation:
+        "Zhou, J., & Camba, J. D. (2021). Computer-aided process planning in immersive environments: A critical review. Computers in Industry, 133, 103547.",
+      href: "https://doi.org/10.1016/j.compind.2021.103547"
+    }
+  ] as JournalArticleItem[],
   conferenceProceedings: [
     {
       citation:
-        "Company, P., Camba, J. D., Contero, M., Zhou, J. (Accepted). From conceptual to embodiment design using Sketch-Based Modeling and Feature Recognition Techniques. 23rd annual International CAD Conference (CAD'26).",
-      href: "#"
+        "Company, P., Camba, J. D., Contero, M., Zhou, J. \"From conceptual to embodiment design using Sketch-Based Modeling and Feature Recognition Techniques.\" 23rd Annual International CAD Conference (CAD'26).",
+      status: "Accepted"
     },
     {
       citation:
-        "Zhou, J., Camba, J. D., Company, P., Contero, M. (Accepted). Drawing-Checker: A Vision RAG Framework for Automated Comparison of Engineering Drawings. 36th CIRP Design Conference (CIRP Design 2026).",
-      href: "#"
+        "Zhou, J., Camba, J. D., Company, P., Contero, M. \"Drawing-Checker: A Vision RAG Framework for Automated Comparison of Engineering Drawings.\" 36th CIRP Design Conference (CIRP Design 2026).",
+      status: "Accepted"
     },
     {
       citation:
-        "Zhou, J., Gupta, D., and Camba, J. D. (Accepted). Prompt2CAD: A Lightweight LLM Framework for Conversational CAD Generation and Iterative Refinement. 2025 International Conference on Industry of the Future and Smart Manufacturing (ISM).",
-      href: "#"
+        "Zhou, J., Gupta, D., and Camba, J. D. \"Prompt2CAD: A Lightweight LLM Framework for Conversational CAD Generation and Iterative Refinement.\" 2025 International Conference on Industry of the Future and Smart Manufacturing (ISM).",
+      status: "Accepted"
     },
     {
       citation:
-        "EngDraw-VQA: An Agent-Based Framework for Automated Visual Question Answering Generation From Engineering Drawings (Accepted). Manufacturing Science and Engineering Conference (MSEC) 2026.",
-      href: "#"
+        "Zhou, J., Camba, J. D., Company, P., Contero, M. \"EngDraw-VQA: An Agent-Based Framework for Automated Visual Question Answering Generation From Engineering Drawings.\" Manufacturing Science and Engineering Conference (MSEC 2026).",
+      status: "Accepted"
     },
     {
       citation:
-        "Gupta, D., Camba, J. D., Fuerst, T., and Zhou, J. (2025). WIP: An AI-Based Virtual Assistant for Supporting a Large Engineering Course. 2025 IEEE Frontiers in Education Conference (FIE).",
+        "Gupta, D., Camba, J. D., Fuerst, T., and Zhou, J. (2025). \"WIP: An AI-Based Virtual Assistant for Supporting a Large Engineering Course.\" 2025 IEEE Frontiers in Education Conference (FIE).",
       href: "https://doi.org/10.1109/FIE63693.2025.11328408"
     },
     {
       citation:
-        "Zhou, J., and Hartman, N. W. (2023). A Framework for Model-Based Visual Inspection: A Case Study of Bottle Dimensional Measurements in the Plastics Industry. 2023 CAD Conference and Exposition.",
+        "Zhou, J., and Hartman, N. W. (2023). \"A Framework for Model-Based Visual Inspection: A Case Study of Bottle Dimensional Measurements in the Plastics Industry.\" 2023 CAD Conference and Exposition.",
       href: "https://doi.org/10.14733/cadconfP.2023.74-79"
     },
     {
       citation:
-        "Zhou, J., Camba, J. D., Hartman, N. W., and Li, Z. (2022). An Approach to Extend the Digital Thread From Requirements to Model Geometry. Manufacturing Science and Engineering Conference (MSEC) 2022.",
+        "Zhou, J., Camba, J. D., Hartman, N. W., and Li, Z. (2022). \"An Approach to Extend the Digital Thread From Requirements to Model Geometry.\" Manufacturing Science and Engineering Conference (MSEC) 2022.",
       href: "https://doi.org/10.1115/MSEC2022-80857"
     },
     {
       citation:
-        "Zhou, J., Camba, J. D., and Fuerst, T. (2022). A Comparative Study on the Use and Interpretation of Annotated 3D Models. IFIP PLM 2021. Best Paper Award Nominee.",
+        "Zhou, J., Camba, J. D., and Fuerst, T. (2022). \"A Comparative Study on the Use and Interpretation of Annotated 3D Models.\" IFIP PLM 2021. Best Paper Award Nominee.",
       href: "https://doi.org/10.1007/978-3-030-94399-8_23"
     }
   ] as ProceedingItem[],

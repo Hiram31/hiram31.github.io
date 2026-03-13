@@ -19,6 +19,16 @@ type MediaPreview = {
 
 type ProceedingWithYear = {
   citation: string;
+  href?: string;
+  status?: "Accepted";
+  inferredYear: {
+    value: number;
+    label: string;
+  };
+};
+
+type JournalArticleWithYear = {
+  citation: string;
   href: string;
   inferredYear: {
     value: number;
@@ -30,6 +40,13 @@ type ProceedingYearGroup = {
   yearLabel: string;
   items: ProceedingWithYear[];
 };
+
+type JournalArticleYearGroup = {
+  yearLabel: string;
+  items: JournalArticleWithYear[];
+};
+
+type Appointment = (typeof profile.appointments)[number];
 
 type ConferencePresentation = (typeof profile.conferencePresentations)[number];
 
@@ -129,6 +146,72 @@ const parsePeriodStart = (period: string) => {
   }
 
   return parsePeriodPart(startPart, 1);
+};
+
+const resolveExperienceRange = (period: string, now = new Date()) => {
+  const parts = period
+    .split("-")
+    .map((part) => part.trim())
+    .filter((part) => part.length > 0);
+
+  if (parts.length === 0) {
+    return null;
+  }
+
+  const start = parsePeriodStart(period);
+  if (!Number.isFinite(start)) {
+    return null;
+  }
+
+  if (parts.length === 1) {
+    return { start, end: start + 1 };
+  }
+
+  const endPart = parts[parts.length - 1] ?? "";
+  const currentMonthIndex = now.getFullYear() * 12 + (now.getMonth() + 1);
+  const parsedEnd = /present/i.test(endPart)
+    ? currentMonthIndex
+    : parsePeriodPart(endPart, 12);
+
+  if (!Number.isFinite(parsedEnd)) {
+    return null;
+  }
+
+  return {
+    start,
+    end: Math.max(start + 1, parsedEnd)
+  };
+};
+
+const calculateIndustryExperienceYears = (
+  appointments: Appointment[],
+  now = new Date()
+) => {
+  const ranges = appointments
+    .filter((appointment) => appointment.countsTowardIndustryExperience)
+    .map((appointment) => resolveExperienceRange(appointment.period, now))
+    .filter((range): range is NonNullable<typeof range> => Boolean(range))
+    .sort((a, b) => a.start - b.start);
+
+  if (ranges.length === 0) {
+    return 0;
+  }
+
+  let totalMonths = 0;
+  let activeRange = { ...ranges[0] };
+
+  for (const range of ranges.slice(1)) {
+    if (range.start <= activeRange.end) {
+      activeRange.end = Math.max(activeRange.end, range.end);
+      continue;
+    }
+
+    totalMonths += activeRange.end - activeRange.start;
+    activeRange = { ...range };
+  }
+
+  totalMonths += activeRange.end - activeRange.start;
+  return Math.max(0, Math.floor(totalMonths / 12));
 };
 
 const inferYearFromCitation = (citation: string) => {
@@ -312,6 +395,87 @@ function App() {
   }, []);
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
+  const heroStats = useMemo(
+    () => {
+      const journalArticleCount = profile.journalArticles.length;
+      const conferenceProceedingCount = profile.conferenceProceedings.length;
+      const conferencePresentationCount = profile.conferencePresentations.length;
+      const publicOutreachTalkCount = profile.outreach.length;
+      const fundingCount = profile.funding.length;
+      const industryExperienceYears = calculateIndustryExperienceYears(
+        profile.appointments
+      );
+
+      return profile.stats.map((stat) => {
+        if (stat.label === "Peer-Reviewed Publications") {
+          return {
+            ...stat,
+            value: String(journalArticleCount + conferenceProceedingCount)
+          };
+        }
+
+        if (stat.label === "Journal Articles") {
+          return {
+            ...stat,
+            value: String(journalArticleCount)
+          };
+        }
+
+        if (stat.label === "Active Manuscripts") {
+          return {
+            ...stat,
+            value: String(
+              profile.manuscriptsUnderReview.length +
+                profile.manuscriptsInPreparation.length
+            )
+          };
+        }
+
+        if (stat.label === "Conference Proceedings") {
+          return {
+            ...stat,
+            value: String(conferenceProceedingCount)
+          };
+        }
+
+        if (stat.label === "Conference Presentations") {
+          return {
+            ...stat,
+            value: String(conferencePresentationCount)
+          };
+        }
+
+        if (stat.label === "Public Outreach Talks") {
+          return {
+            ...stat,
+            value: String(publicOutreachTalkCount)
+          };
+        }
+
+        if (stat.label === "Funding and Grants") {
+          return {
+            ...stat,
+            value: String(fundingCount)
+          };
+        }
+
+        if (stat.label === "Industry Experience") {
+          return {
+            ...stat,
+            value: Number.isFinite(industryExperienceYears)
+              ? `${industryExperienceYears}+ years`
+              : stat.value ?? ""
+          };
+        }
+
+        return {
+          ...stat,
+          value: stat.value ?? ""
+        };
+      });
+    },
+    []
+  );
   const educationByMostRecent = useMemo(
     () =>
       profile.education.slice().sort((a, b) => {
@@ -386,6 +550,40 @@ function App() {
         return groups;
       }, []),
     [mediaByMostRecent]
+  );
+  const journalArticlesByMostRecent = useMemo<JournalArticleWithYear[]>(
+    () =>
+      profile.journalArticles
+        .map((item) => ({
+          ...item,
+          inferredYear: inferYearFromCitation(item.citation)
+        }))
+        .sort((a, b) => {
+          const yearDelta = b.inferredYear.value - a.inferredYear.value;
+          if (yearDelta !== 0) {
+            return yearDelta;
+          }
+
+          return a.citation.localeCompare(b.citation);
+        }),
+    []
+  );
+  const journalArticlesByYear = useMemo<JournalArticleYearGroup[]>(
+    () =>
+      journalArticlesByMostRecent.reduce<JournalArticleYearGroup[]>(
+        (groups, item) => {
+          const currentGroup = groups[groups.length - 1];
+          if (currentGroup && currentGroup.yearLabel === item.inferredYear.label) {
+            currentGroup.items.push(item);
+            return groups;
+          }
+
+          groups.push({ yearLabel: item.inferredYear.label, items: [item] });
+          return groups;
+        },
+        []
+      ),
+    [journalArticlesByMostRecent]
   );
   const conferenceProceedingsByMostRecent = useMemo<ProceedingWithYear[]>(
     () =>
@@ -546,7 +744,7 @@ function App() {
             </figure>
           </div>
           <div className="stats-grid">
-            {profile.stats.map((stat) => (
+            {heroStats.map((stat) => (
               <article key={stat.label} className="stat-card">
                 <h2>{stat.value}</h2>
                 <p>{stat.label}</p>
@@ -636,8 +834,10 @@ function App() {
         <section className="section reveal" id="publications">
           <div className="section-title-wrap">
             <p className="section-eyebrow">Publications</p>
-            <h2>Selected Publications</h2>
+            <h2>Publication Highlights and Full Record</h2>
           </div>
+
+          <h3 className="subsection-title">Featured Publications</h3>
           <div className="publication-list">
             {profile.publications.map((paper) => (
               <article key={paper.title} className="paper-card publication-card">
@@ -720,6 +920,32 @@ function App() {
             ))}
           </div>
 
+          <h3 className="subsection-title">Journal Articles</h3>
+          <div className="proceedings-list">
+            {journalArticlesByYear.map((group) => (
+              <section key={`journals-${group.yearLabel}`} className="proceeding-group">
+                <p className="proceeding-year">{group.yearLabel}</p>
+                <div className="proceeding-group-items">
+                  {group.items.map((item) => (
+                    <article key={item.citation} className="proceeding-item">
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="proceeding-content timeline-card interactive-card-link"
+                      >
+                        <p className="card-note">{item.citation}</p>
+                        <span className="card-link-icon repo-link-arrow" aria-hidden="true">
+                          View
+                        </span>
+                      </a>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+
           <h3 className="subsection-title">Peer-Reviewed Conference Proceedings</h3>
           <div className="proceedings-list">
             {conferenceProceedingsByYear.map((group) => (
@@ -743,7 +969,9 @@ function App() {
                       ) : (
                         <div className="proceeding-content timeline-card">
                           <p className="card-note">{item.citation}</p>
-                          <span className="card-status-pill">Accepted</span>
+                          {item.status ? (
+                            <span className="card-status-pill">{item.status}</span>
+                          ) : null}
                         </div>
                       )}
                     </article>
@@ -753,7 +981,7 @@ function App() {
             ))}
           </div>
 
-          <h3 className="subsection-title">Manuscript Pipeline</h3>
+          <h3 className="subsection-title">Active Manuscripts</h3>
           <div className="split-grid">
             <article className="timeline-card manuscript-card manuscript-card-review">
               <header className="manuscript-card-head">
