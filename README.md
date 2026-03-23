@@ -19,7 +19,7 @@ This repository contains a personal academic/professional website built with Rea
 │   └── media/
 │       ├── headshots/
 │       ├── icons/
-│       └── notion/
+│       └── publications/
 ├── src/
 │   ├── data/
 │   │   └── profile.ts

@@ -883,11 +883,11 @@ function App() {
                           <figure
                             key={`${paper.title}-${media.src}`}
                             className={`media-card${
-                              media.src === "/media/notion/ship-flowchart.png"
+                              media.src === "/media/publications/ship-flowchart.png"
                                 ? " media-card-uniform"
                                 : ""
                             }${
-                              media.src === "/media/notion/ship-image-2.png"
+                              media.src === "/media/publications/ship-image-2.png"
                                 ? " media-card-under-second"
                                 : ""
                             }`}

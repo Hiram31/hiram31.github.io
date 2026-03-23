@@ -269,12 +269,28 @@ export const profile = {
       tags: ["Multimodal LLM", "CAD", "Conversational Interface"],
       media: [
         {
-          src: "/media/notion/demo.gif",
+          src: "/media/publications/cadialogue-demo.gif",
           alt: "CADialogue demo animation."
         },
         {
-          src: "/media/notion/cadialogue-figure-1.png",
-          alt: "CADialogue paper figure."
+          src: "/media/publications/cadialogue-figure-1.png",
+          alt: "CADialogue figure."
+        }
+      ]
+    },
+    {
+      title:
+        "Prompt2CAD: A Lightweight LLM Framework for Conversational CAD Generation and Iterative Refinement",
+      venue: "Procedia Computer Science",
+      year: "2026",
+      summary:
+        "Presents a lightweight conversational CAD workflow that uses LLM-driven generation and iterative refinement to support prompt-based design creation and update.",
+      href: "https://doi.org/10.1016/j.procs.2026.02.204",
+      tags: ["Multimodal LLM", "Programming-Based CAD", "Human-in-the-Loop Refinement"],
+      media: [
+        {
+          src: "/media/publications/prompt2cad.png",
+          alt: "Prompt2CAD figure."
         }
       ]
     },
@@ -286,15 +302,15 @@ export const profile = {
       summary:
         "Systematic analysis of multimodal LLM applications, limitations, and opportunities in parametric CAD.",
       href: "https://doi.org/10.1016/j.eswa.2025.127520",
-      tags: ["LLM", "Parametric CAD", "Survey"],
+      tags: ["LLM", "Parametric CAD", "Literature Review"],
       media: [
         {
-          src: "/media/notion/multimodal-llm-figure-1.jpg",
+          src: "/media/publications/multimodal-llm-figure-1.jpg",
           alt: "Multimodal LLMs in CAD figure 1."
         },
         {
-          src: "/media/notion/multimodal-llm-figure-11.jpg",
-          alt: "Multimodal LLMs in CAD figure 11."
+          src: "/media/publications/multimodal-llm-figure-2.jpg",
+          alt: "Multimodal LLMs in CAD figure 2."
         }
       ]
     },
@@ -309,16 +325,16 @@ export const profile = {
       tags: ["Drawing Automation", "CAD", "Shipbuilding"],
       media: [
         {
-          src: "/media/notion/ship-flowchart.png",
+          src: "/media/publications/ship-flowchart.png",
           alt: "Ship stiffener drawing automation flowchart."
         },
         {
-          src: "/media/notion/ship-image-1.png",
-          alt: "Ship drawing automation result image 1."
+          src: "/media/publications/ship-figure-1.png",
+          alt: "Ship drawing automation figure 1."
         },
         {
-          src: "/media/notion/ship-image-2.png",
-          alt: "Ship drawing automation result image 2."
+          src: "/media/publications/ship-figure-2.png",
+          alt: "Ship drawing automation figure 2."
         }
       ]
     },
@@ -333,12 +349,12 @@ export const profile = {
       tags: ["Machine Vision", "Visual Inspection", "Manufacturing"],
       media: [
         {
-          src: "/media/notion/mbvis-setup-safe.png",
+          src: "/media/publications/mbvis-setup.png",
           alt: "MBVIS experimental setup."
         },
         {
-          src: "/media/notion/mbvis-page-4.png",
-          alt: "MBVIS paper figure."
+          src: "/media/publications/mbvis.png",
+          alt: "MBVIS figure."
         }
       ]
     },
@@ -353,8 +369,8 @@ export const profile = {
       tags: ["CAPP", "Immersive Environments", "Review"],
       media: [
         {
-          src: "/media/notion/capp-review-page-3.png",
-          alt: "CAPP immersive environments review figure."
+          src: "/media/publications/capp-review.png",
+          alt: "CAPP review figure."
         }
       ]
     }
@@ -404,8 +420,8 @@ export const profile = {
     },
     {
       citation:
-        "Zhou, J., Gupta, D., and Camba, J. D. \"Prompt2CAD: A Lightweight LLM Framework for Conversational CAD Generation and Iterative Refinement.\" 2025 International Conference on Industry of the Future and Smart Manufacturing (ISM).",
-      status: "Accepted"
+        "Zhou, J., Gupta, D., and Camba, J. D. (2026). \"Prompt2CAD: A Lightweight LLM Framework for Conversational CAD Generation and Iterative Refinement.\" Procedia Computer Science, 277, 1663-1672.",
+      href: "https://doi.org/10.1016/j.procs.2026.02.204"
     },
     {
       citation:
