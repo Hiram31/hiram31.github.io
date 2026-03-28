@@ -420,6 +420,11 @@ export const profile = {
     },
     {
       citation:
+        "Camba, J. D., Contero, M., and Zhou, J. \"Large Language Models in Digital Manufacturing: An Empirical Study of Verification-Centered Design Cognition.\" 12th International Conference on Design Computing and Cognition (DCC'26).",
+      status: "Accepted"
+    },
+    {
+      citation:
         "Zhou, J., Gupta, D., and Camba, J. D. (2026). \"Prompt2CAD: A Lightweight LLM Framework for Conversational CAD Generation and Iterative Refinement.\" Procedia Computer Science, 277, 1663-1672.",
       href: "https://doi.org/10.1016/j.procs.2026.02.204"
     },
@@ -472,12 +477,6 @@ export const profile = {
       title:
         "EngDraw-Extractor: A Multi-Agent System for Information Extraction from 2D Engineering Drawings",
       venue: "IDETC-CIE 2026",
-      status: "Under Review"
-    },
-    {
-      title:
-        "Large Language Models in Digital Manufacturing: An Empirical Study of Verification-Centered Design Cognition",
-      venue: "DCC'26",
       status: "Under Review"
     }
   ] as ManuscriptItem[],
