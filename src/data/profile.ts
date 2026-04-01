@@ -457,18 +457,6 @@ export const profile = {
   manuscriptsUnderReview: [
     {
       title:
-        "CADThread: A Multimodal Engineering Design Dataset Linking Feature-Based Parametric CAD, Geometry, and Drawings",
-      venue: "Journal of Computing and Information Science in Engineering",
-      status: "Under Review"
-    },
-    {
-      title:
-        "GenAI-Aided Design in Engineering Education: Competencies, Challenges, and Opportunities",
-      venue: "Computer-Aided Design",
-      status: "Under Review"
-    },
-    {
-      title:
         "From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education",
       venue: "ASEE Computers in Education",
       status: "Under Review"
@@ -481,6 +469,18 @@ export const profile = {
     }
   ] as ManuscriptItem[],
   manuscriptsInPreparation: [
+    {
+      title:
+        "CADThread: A Multimodal Engineering Design Dataset Linking Feature-Based Parametric CAD, Geometry, and Drawings",
+      venue: "Planned Submission",
+      status: "In Preparation"
+    },
+    {
+      title:
+        "GenAI-Aided Design in Engineering Education: Competencies, Challenges, and Opportunities",
+      venue: "Planned Submission",
+      status: "In Preparation"
+    },
     {
       title:
         "EngDraw-Annotator: Schema-Aware, LLM-Assisted Annotation for Engineering Drawings",
