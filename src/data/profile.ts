@@ -130,7 +130,7 @@ export const profile = {
     "Engineering Design"
   ],
   location: "Evansville, IN, USA",
-  email: "hiramzhou31@gmail.com",
+  email: "jiwei.zhou.us@gmail.com",
   affiliation: "Computer Vision Scientist, Heliponix LLC",
   intro:
     "I develop advanced AI systems at the intersection of computer vision, multimodal large language models, and CAD for engineering design and smart manufacturing. Across industry and academic work, I focus on model-based visual inspection, design automation, and AI-assisted engineering workflows that move from research prototypes to real-world deployment.",
