@@ -761,6 +761,12 @@ export const selectedSoftware = [
     description:
       "Multimodal LLM-powered conversational assistant for intuitive parametric CAD modeling.",
     href: "https://github.com/Hiram31/CADialogue"
+  },
+  {
+    name: "WritingAssistant",
+    description:
+      "PopClip-style macOS writing assistant that rewrites, polishes, and drafts text anywhere with configurable AI providers.",
+    href: "https://github.com/Hiram31/WritingAssistant"
   }
 ];
 

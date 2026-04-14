@@ -85,7 +85,7 @@ const navItems = [
   { label: "Contact", href: "#contact" }
 ];
 
-const featuredRepoNames = ["CADialogue"];
+const featuredRepoNames = ["CADialogue", "WritingAssistant"];
 const mapMyVisitorsScriptSrc =
   "https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=vpkCxKQ2ByhD-7oXnjNhlxPOH0Rxuf_I3M93SurEQbA";
 const mapMyVisitorsHref = "https://mapmyvisitors.com/web/1c2uq";
