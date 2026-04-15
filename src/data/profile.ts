@@ -366,7 +366,7 @@ export const profile = {
       summary:
         "Critical review of immersive environment approaches for computer-aided process planning.",
       href: "https://doi.org/10.1016/j.compind.2021.103547",
-      tags: ["CAPP", "Immersive Environments", "Review"],
+      tags: ["CAPP", "Immersive Environments", "Literature Review"],
       media: [
         {
           src: "/media/publications/capp-review.png",
@@ -708,7 +708,8 @@ export const profile = {
         "Institute of Industrial and Systems Engineers (IISE) Annual Conference & Expo, 2026",
         "International Manufacturing Science and Engineering Conference (MSEC), 2026",
         "American Society for Engineering Education (ASEE) Annual Conference & Exposition, 2023, 2024, 2026",
-        "IEEE Frontiers in Education Conference (FIE), 2025, 2026"
+        "IEEE Frontiers in Education Conference (FIE), 2025, 2026",
+        "IEEE Visualization and Visual Analytics (VIS), 2026"
       ]
     },
     {
