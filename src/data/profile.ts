@@ -425,6 +425,11 @@ export const profile = {
     },
     {
       citation:
+        "Zhou, J. and Camba, J. D. \"EngDraw-Extractor: A Multi-Agent System for Information Extraction from 2D Engineering Drawings.\" IDETC-CIE 2026.",
+      status: "Accepted"
+    },
+    {
+      citation:
         "Zhou, J., Gupta, D., and Camba, J. D. (2026). \"Prompt2CAD: A Lightweight LLM Framework for Conversational CAD Generation and Iterative Refinement.\" Procedia Computer Science, 277, 1663-1672.",
       href: "https://doi.org/10.1016/j.procs.2026.02.204"
     },
@@ -459,12 +464,6 @@ export const profile = {
       title:
         "From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education",
       venue: "ASEE Computers in Education",
-      status: "Under Review"
-    },
-    {
-      title:
-        "EngDraw-Extractor: A Multi-Agent System for Information Extraction from 2D Engineering Drawings",
-      venue: "IDETC-CIE 2026",
       status: "Under Review"
     }
   ] as ManuscriptItem[],
