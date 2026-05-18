@@ -727,7 +727,8 @@ export const profile = {
         "IEEE Transactions on Computational Social Systems",
         "Image and Vision Computing",
         "Results in Engineering",
-        "SoftwareX"
+        "SoftwareX",
+        "Transactions on Graphics"
       ]
     }
   ] as ServiceGroup[],
