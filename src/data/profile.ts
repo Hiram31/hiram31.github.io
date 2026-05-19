@@ -410,11 +410,6 @@ export const profile = {
   conferenceProceedings: [
     {
       citation:
-        "Company, P., Camba, J. D., Contero, M., Zhou, J. \"From conceptual to embodiment design using Sketch-Based Modeling and Feature Recognition Techniques.\" 23rd Annual International CAD Conference (CAD'26).",
-      status: "Accepted"
-    },
-    {
-      citation:
         "Zhou, J., Camba, J. D., Company, P., Contero, M. \"Drawing-Checker: A Vision RAG Framework for Automated Comparison of Engineering Drawings.\" 36th CIRP Design Conference (CIRP Design 2026).",
       status: "Accepted"
     },
@@ -427,6 +422,11 @@ export const profile = {
       citation:
         "Zhou, J. and Camba, J. D. \"EngDraw-Extractor: A Multi-Agent System for Information Extraction from 2D Engineering Drawings.\" IDETC-CIE 2026.",
       status: "Accepted"
+    },
+    {
+      citation:
+        "Company, P., Camba, J. D., Zhou, J., and Contero, M. (2026). \"From Conceptual to Embodiment Design Using Sketch-Based Modeling and Feature Recognition Techniques.\" 23rd Annual International CAD Conference (CAD'26).",
+      href: "https://doi.org/10.14733/cadconfP.2026.50-54"
     },
     {
       citation:
@@ -445,7 +445,7 @@ export const profile = {
     },
     {
       citation:
-        "Zhou, J., and Hartman, N. W. (2023). \"A Framework for Model-Based Visual Inspection: A Case Study of Bottle Dimensional Measurements in the Plastics Industry.\" 2023 CAD Conference and Exposition.",
+        "Zhou, J., and Hartman, N. W. (2023). \"A Framework for Model-Based Visual Inspection: A Case Study of Bottle Dimensional Measurements in the Plastics Industry.\" 20th Annual International CAD Conference (CAD'23).",
       href: "https://doi.org/10.14733/cadconfP.2023.74-79"
     },
     {

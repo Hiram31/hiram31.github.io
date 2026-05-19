@@ -21,6 +21,7 @@ type ProceedingWithYear = {
   citation: string;
   href?: string;
   status?: "Accepted";
+  sourceIndex: number;
   inferredYear: {
     value: number;
     label: string;
@@ -588,8 +589,9 @@ function App() {
   const conferenceProceedingsByMostRecent = useMemo<ProceedingWithYear[]>(
     () =>
       profile.conferenceProceedings
-        .map((item) => ({
+        .map((item, sourceIndex) => ({
           ...item,
+          sourceIndex,
           inferredYear: inferYearFromCitation(item.citation)
         }))
         .sort((a, b) => {
@@ -598,7 +600,7 @@ function App() {
             return yearDelta;
           }
 
-          return a.citation.localeCompare(b.citation);
+          return a.sourceIndex - b.sourceIndex;
         }),
     []
   );
