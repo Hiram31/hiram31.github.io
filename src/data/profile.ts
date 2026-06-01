@@ -462,8 +462,12 @@ export const profile = {
   manuscriptsUnderReview: [
     {
       title:
+        "MAS-DFM: A Traceable Multi-Agent Framework for Drawing-Based Manufacturability Analysis",
+      status: "Under Review",
+    },
+    {
+      title:
         "From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education",
-      venue: "ASEE Computers in Education",
       status: "Under Review"
     }
   ] as ManuscriptItem[],
