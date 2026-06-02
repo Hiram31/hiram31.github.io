@@ -469,6 +469,11 @@ export const profile = {
       title:
         "From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education",
       status: "Under Review"
+    },
+    {
+      title:
+        "EngDraw-Annotator: An AI-Assisted Interactive System for Evidence-Linked Engineering Drawing Annotation",
+      status: "Under Review"
     }
   ] as ManuscriptItem[],
   manuscriptsInPreparation: [
@@ -481,12 +486,6 @@ export const profile = {
     {
       title:
         "GenAI-Aided Design in Engineering Education: Competencies, Challenges, and Opportunities",
-      venue: "Planned Submission",
-      status: "In Preparation"
-    },
-    {
-      title:
-        "EngDraw-Annotator: Schema-Aware, LLM-Assisted Annotation for Engineering Drawings",
       venue: "Planned Submission",
       status: "In Preparation"
     }
@@ -708,9 +707,10 @@ export const profile = {
     {
       category: "Conference Reviewer",
       entries: [
+        "ASME International Mechanical Engineering Congress and Exposition (IMECE), 2026",
         "Institute of Industrial and Systems Engineers (IISE) Annual Conference & Expo, 2026",
-        "International Manufacturing Science and Engineering Conference (MSEC), 2026",
-        "American Society for Engineering Education (ASEE) Annual Conference & Exposition, 2023, 2024, 2026",
+        "ASME International Manufacturing Science and Engineering Conference (MSEC), 2026",
+        "ASEE Annual Conference & Exposition, 2023, 2024, 2026",
         "IEEE Frontiers in Education Conference (FIE), 2025, 2026",
         "IEEE Visualization and Visual Analytics (VIS), 2026"
       ]
