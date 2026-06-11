@@ -280,6 +280,22 @@ export const profile = {
     },
     {
       title:
+        "Drawing-Checker: A Vision RAG Framework for Automated Comparison of Engineering Drawings",
+      venue: "Procedia CIRP",
+      year: "2026",
+      summary:
+        "Introduces a vision RAG pipeline for automated engineering drawing comparison, combining YOLO view detection, CLIP matching, and multimodal LLM reasoning to improve localized discrepancy detection.",
+      href: "https://doi.org/10.1016/j.procir.2026.05.235",
+      tags: ["Drawing Comparison", "Vision RAG", "Engineering Drawings", "View Matching"],
+      media: [
+        {
+          src: "/media/publications/drawing-checker.png",
+          alt: "Drawing-Checker framework overview for engineering drawing comparison."
+        }
+      ]
+    },
+    {
+      title:
         "Prompt2CAD: A Lightweight LLM Framework for Conversational CAD Generation and Iterative Refinement",
       venue: "Procedia Computer Science",
       year: "2026",
@@ -410,8 +426,8 @@ export const profile = {
   conferenceProceedings: [
     {
       citation:
-        "Zhou, J., Camba, J. D., Company, P., Contero, M. \"Drawing-Checker: A Vision RAG Framework for Automated Comparison of Engineering Drawings.\" 36th CIRP Design Conference (CIRP Design 2026).",
-      status: "Accepted"
+        "Zhou, J., Camba, J. D., Company, P., and Contero, M. (2026). \"Drawing-Checker: A Vision RAG Framework for Automated Comparison of Engineering Drawings.\" Procedia CIRP, 142, 127-132.",
+      href: "https://doi.org/10.1016/j.procir.2026.05.235"
     },
     {
       citation:
