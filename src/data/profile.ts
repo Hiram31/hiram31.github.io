@@ -752,6 +752,7 @@ export const profile = {
         "Computer-Aided Design",
         "Computers & Graphics",
         "Computers & Industrial Engineering",
+        "Computers in Human Behavior: Artificial Humans",
         "Design Studies",
         "Engineering Applications of Artificial Intelligence",
         "Engineering with Computers",
