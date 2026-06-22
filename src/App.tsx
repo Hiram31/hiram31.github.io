@@ -20,7 +20,7 @@ type MediaPreview = {
 type ProceedingWithYear = {
   citation: string;
   href?: string;
-  status?: "Accepted";
+  status?: "Accepted" | "Presented";
   sourceIndex: number;
   inferredYear: {
     value: number;
@@ -1052,6 +1052,7 @@ function App() {
                         <p className="card-note">{item.title}</p>
                         <div className="tag-row">
                           <span>{item.location}</span>
+                          {item.note ? <span>{item.note}</span> : null}
                         </div>
                       </div>
                     </article>

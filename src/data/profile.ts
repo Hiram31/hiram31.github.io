@@ -54,7 +54,7 @@ export type HighlightStat = {
 export type ProceedingItem = {
   citation: string;
   href?: string;
-  status?: "Accepted";
+  status?: "Accepted" | "Presented";
 };
 
 export type ManuscriptItem = {
@@ -68,6 +68,7 @@ export type PresentationItem = {
   title: string;
   location: string;
   year: string;
+  note?: string;
 };
 
 export type OutreachItem = {
@@ -452,7 +453,7 @@ export const profile = {
     {
       citation:
         "Zhou, J., Camba, J. D., Company, P., Contero, M. \"EngDraw-VQA: An Agent-Based Framework for Automated Visual Question Answering Generation From Engineering Drawings.\" Manufacturing Science and Engineering Conference (MSEC 2026).",
-      status: "Accepted"
+      status: "Presented"
     },
     {
       citation:
@@ -508,18 +509,26 @@ export const profile = {
   ] as ManuscriptItem[],
   conferencePresentations: [
     {
-      event:
-        "7th International Conference on Industry of the Future and Smart Manufacturing (ISM 2025)",
+      event: "MSEC 2026 Manufacturing Science and Engineering Conference",
       title:
-        "Prompt2CAD: A Lightweight LLM Framework for Conversational CAD Generation and Iterative Refinement",
-      location: "University of Malta, Malta",
-      year: "2025"
+        "EngDraw-VQA: An Agent-Based Framework for Automated Visual Question Answering Generation From Engineering Drawings",
+      location: "Penn State University – State College, Pennsylvania, USA",
+      year: "2026"
     },
     {
-      event: "NAPPN Annual Conference",
+      event:
+        "ISM 2025 7th International Conference on Industry of the Future and Smart Manufacturing",
+      title:
+        "Prompt2CAD: A Lightweight LLM Framework for Conversational CAD Generation and Iterative Refinement",
+      location: "University of Malta, Valletta Campus – Valletta, Malta",
+      year: "2025",
+      note: "Remote presentation"
+    },
+    {
+      event: "North American Plant Phenotyping Network (NAPPN) Annual Conference",
       title:
         "Integrating Artificial Intelligence in Plant Growth Monitoring for Innovative Rotary Aeroponic Systems",
-      location: "Olivette, MO, USA",
+      location: "Donald Danforth Plant Science Center – Olivette, MO, USA",
       year: "2025"
     },
     {
@@ -527,26 +536,29 @@ export const profile = {
       title:
         "Development and Evaluation of a Vision Inspection System for Plastic Bottle Measurement",
       location: "Washington, D.C., USA",
-      year: "2023"
+      year: "2023",
+      note: "Remote presentation"
     },
     {
       event: "20th Annual International CAD Conference (CAD'23)",
       title:
         "A Framework for Model-Based Visual Inspection: A Case Study of Bottle Dimensional Measurements in the Plastics Industry",
       location: "Mexico City, Mexico",
-      year: "2023"
+      year: "2023",
+      note: "Remote presentation"
     },
     {
-      event: "17th International Manufacturing Science and Engineering Conference (MSEC)",
+      event: "MSEC 2022 Manufacturing Science and Engineering Conference",
       title: "An Approach to Extend the Digital Thread from Requirements to Model Geometry",
-      location: "West Lafayette, IN, USA",
+      location: "Purdue University – West Lafayette, IN, USA",
       year: "2022"
     },
     {
       event: "18th International Conference on Product Lifecycle Management (PLM 2021)",
       title: "A Comparative Study on the Use and Interpretation of Annotated 3D Models",
       location: "Virtual Conference",
-      year: "2021"
+      year: "2021",
+      note: "Remote presentation"
     }
   ] as PresentationItem[],
   outreach: [
