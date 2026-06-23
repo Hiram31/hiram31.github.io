@@ -723,24 +723,25 @@ export const profile = {
     {
       category: "Technical Program Committee",
       entries: [
-        "13th International Conference on Mechanics, Materials and Manufacturing (ICMMM), 2026"
+        "International Conference on Mechanics, Materials and Manufacturing (ICMMM), 2026"
       ]
     },
     {
       category: "Session Chair",
       entries: [
-        "10th International Conference on Mechanics, Materials and Manufacturing (ICMMM), 2023"
+        "International Conference on Mechanics, Materials and Manufacturing (ICMMM), 2023"
       ]
     },
     {
       category: "Conference Reviewer",
       entries: [
-        "ASME International Mechanical Engineering Congress and Exposition (IMECE), 2026",
-        "Institute of Industrial and Systems Engineers (IISE) Annual Conference & Expo, 2026",
-        "ASME International Manufacturing Science and Engineering Conference (MSEC), 2026",
         "ASEE Annual Conference & Exposition, 2023, 2024, 2026",
+        "ASME International Manufacturing Science and Engineering Conference (MSEC), 2026",
+        "ASME International Mechanical Engineering Congress and Exposition (IMECE), 2026",
         "IEEE Frontiers in Education Conference (FIE), 2025, 2026",
-        "IEEE Visualization and Visual Analytics (VIS), 2026"
+        "IEEE Visualization and Visual Analytics (VIS), 2026",
+        "Institute of Industrial and Systems Engineers (IISE) Annual Conference & Expo, 2026",
+        "International Conference on Industry of the Future and Smart Manufacturing (ISM), 2026"
       ]
     },
     {
