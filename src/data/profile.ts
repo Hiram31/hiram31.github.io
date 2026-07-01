@@ -491,15 +491,14 @@ export const profile = {
       title:
         "EngDraw-Annotator: An AI-Assisted Interactive System for Evidence-Linked Engineering Drawing Annotation",
       status: "Under Review"
+    },
+    {
+      title:
+        "CADThread: A Dataset Linking Parametric CAD, 3D Geometry, and Engineering Drawings with a Drawing-to-CAD Benchmark",
+      status: "Under Review"
     }
   ] as ManuscriptItem[],
   manuscriptsInPreparation: [
-    {
-      title:
-        "CADThread: A Multimodal Engineering Design Dataset Linking Feature-Based Parametric CAD, Geometry, and Drawings",
-      venue: "Planned Submission",
-      status: "In Preparation"
-    },
     {
       title:
         "GenAI-Aided Design in Engineering Education: Competencies, Challenges, and Opportunities",
