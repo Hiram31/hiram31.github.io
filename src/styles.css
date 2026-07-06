@@ -311,7 +311,10 @@ main {
 .stat-card h2 {
   margin: 0;
   font-size: 1.15rem;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
 }
 
 .stat-card p {
