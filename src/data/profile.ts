@@ -432,6 +432,11 @@ export const profile = {
     },
     {
       citation:
+        "Zhou, J. and Camba, J. D. \"MAS-DFM: A Traceable Multi-Agent Framework for Drawing-Based Manufacturability Analysis.\" 2026 8th International Conference on Industry of the Future and Smart Manufacturing (ISM).",
+      status: "Accepted"
+    },
+    {
+      citation:
         "Camba, J. D., Contero, M., and Zhou, J. \"Large Language Models in Digital Manufacturing: An Empirical Study of Verification-Centered Design Cognition.\" 12th International Conference on Design Computing and Cognition (DCC'26).",
       status: "Accepted"
     },
@@ -479,11 +484,6 @@ export const profile = {
   manuscriptsUnderReview: [
     {
       title:
-        "MAS-DFM: A Traceable Multi-Agent Framework for Drawing-Based Manufacturability Analysis",
-      status: "Under Review",
-    },
-    {
-      title:
         "From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education",
       status: "Under Review"
     },
@@ -516,7 +516,7 @@ export const profile = {
     },
     {
       event:
-        "ISM 2025 7th International Conference on Industry of the Future and Smart Manufacturing",
+        "2025 7th International Conference on Industry of the Future and Smart Manufacturing (ISM)",
       title:
         "Prompt2CAD: A Lightweight LLM Framework for Conversational CAD Generation and Iterative Refinement",
       location: "University of Malta, Valletta Campus – Valletta, Malta",
