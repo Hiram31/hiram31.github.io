@@ -484,6 +484,11 @@ export const profile = {
   manuscriptsUnderReview: [
     {
       title:
+        "Human–AI Co-Design from Visual Requirements to Physical Validation: A Parametric Hydroponic Adapter Case Study",
+      status: "Under Review"
+    },
+    {
+      title:
         "From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education",
       status: "Under Review"
     },
@@ -759,6 +764,7 @@ export const profile = {
         "Expert Systems with Applications",
         "IEEE Transactions on Computational Social Systems",
         "Image and Vision Computing",
+        "International Journal of Information Management Data Insights",
         "Results in Engineering",
         "SoftwareX",
         "Transactions on Graphics"
