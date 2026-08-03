@@ -86,7 +86,7 @@ const navItems = [
   { label: "Contact", href: "#contact" }
 ];
 
-const featuredRepoNames = ["CADialogue", "WritingAssistant"];
+const featuredRepoNames = ["CADialogue", "MAS-DFM"];
 const mapMyVisitorsScriptSrc =
   "https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=vpkCxKQ2ByhD-7oXnjNhlxPOH0Rxuf_I3M93SurEQbA";
 const mapMyVisitorsHref = "https://mapmyvisitors.com/web/1c2uq";
@@ -1318,7 +1318,7 @@ function App() {
             <h2>Contact</h2>
           </div>
           <div className="contact-card">
-            <p>For academic inquiries, collaborations, and invited talks:</p>
+            <p>For academic inquiries, collaborations, and other communications:</p>
             {profile.email === "your.email@example.com" ? (
               <p className="card-note">
                 Add your preferred contact email in <code>src/data/profile.ts</code>.

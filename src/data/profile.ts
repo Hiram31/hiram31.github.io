@@ -762,6 +762,7 @@ export const profile = {
         "Engineering Applications of Artificial Intelligence",
         "Engineering with Computers",
         "Expert Systems with Applications",
+        "Frontiers in Mechanical Engineering",
         "IEEE Transactions on Computational Social Systems",
         "Image and Vision Computing",
         "International Journal of Information Management Data Insights",
