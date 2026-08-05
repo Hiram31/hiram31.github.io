@@ -448,7 +448,7 @@ export const profile = {
     {
       citation:
         "Company, P., Camba, J. D., Zhou, J., and Contero, M. (2026). \"From Conceptual to Embodiment Design Using Sketch-Based Modeling and Feature Recognition Techniques.\" 23rd Annual International CAD Conference (CAD'26).",
-      href: "https://doi.org/10.14733/cadconfP.2026.50-54"
+      href: "https://cad-conference.net/files/CAD26/CAD26_50-54.pdf"
     },
     {
       citation:
