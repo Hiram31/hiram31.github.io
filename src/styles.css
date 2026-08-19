@@ -168,15 +168,6 @@ main {
   min-width: 0;
 }
 
-.eyebrow {
-  margin: 0 0 0.6rem;
-  color: var(--accent);
-  font-size: 0.76rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
 .hero h1 {
   margin: 0;
   max-width: 860px;
@@ -335,17 +326,8 @@ main {
   margin-bottom: 0.9rem;
 }
 
-.section-eyebrow {
-  margin: 0;
-  color: var(--accent-2);
-  font-size: 0.74rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
 .section h2 {
-  margin: 0.18rem 0 0;
+  margin: 0;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(1.65rem, 2.8vw, 2.2rem);
   line-height: 1.1;

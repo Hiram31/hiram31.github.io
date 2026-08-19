@@ -699,7 +699,6 @@ function App() {
         <section className="hero reveal" id="about">
           <div className="hero-top">
             <div className="hero-copy">
-              <p className="eyebrow">Academic Homepage</p>
               <h1>{profile.headline}</h1>
               {profile.subheadline ? (
                 <p className="subheadline">{profile.subheadline}</p>
@@ -757,7 +756,6 @@ function App() {
 
         <section className="section reveal" id="research">
           <div className="section-title-wrap">
-            <p className="section-eyebrow">Research</p>
             <h2>Research Interests</h2>
           </div>
           <div className="card-grid">
@@ -772,8 +770,7 @@ function App() {
 
         <section className="section reveal" id="education">
           <div className="section-title-wrap">
-            <p className="section-eyebrow">Education</p>
-            <h2>Academic Foundation</h2>
+            <h2>Education</h2>
           </div>
           <div className="cv-timeline education-timeline">
             {educationByMostRecent.map((item) => (
@@ -798,8 +795,7 @@ function App() {
 
         <section className="section reveal" id="appointments">
           <div className="section-title-wrap">
-            <p className="section-eyebrow">Appointments</p>
-            <h2>Research and Professional Experience</h2>
+            <h2>Appointments</h2>
           </div>
           <div
             className={`cv-timeline appointments-timeline${
@@ -835,8 +831,7 @@ function App() {
 
         <section className="section reveal" id="publications">
           <div className="section-title-wrap">
-            <p className="section-eyebrow">Publications</p>
-            <h2>Publication Highlights and Full Record</h2>
+            <h2>Publications</h2>
           </div>
 
           <h3 className="subsection-title">Featured Publications</h3>
@@ -1029,8 +1024,7 @@ function App() {
 
         <section className="section reveal" id="talks">
           <div className="section-title-wrap">
-            <p className="section-eyebrow">Talks</p>
-            <h2>Conference Presentations and Outreach</h2>
+            <h2>Talks</h2>
           </div>
 
           <h3 className="subsection-title">Conference Presentations</h3>
@@ -1093,8 +1087,7 @@ function App() {
 
         <section className="section reveal" id="service">
           <div className="section-title-wrap">
-            <p className="section-eyebrow">Service</p>
-            <h2>Academic Service, Funding, and Awards</h2>
+            <h2>Service, Funding, and Awards</h2>
           </div>
           <div className="split-grid">
             <article className="timeline-card">
@@ -1137,8 +1130,7 @@ function App() {
 
         <section className="section reveal" id="leadership">
           <div className="section-title-wrap">
-            <p className="section-eyebrow">Leadership</p>
-            <h2>Leadership, Teaching, and Media</h2>
+            <h2>Leadership, Certification, Teaching, and Media</h2>
           </div>
 
           <h3 className="subsection-title">Leadership Experience</h3>
@@ -1244,7 +1236,6 @@ function App() {
 
         <section className="section reveal" id="github">
           <div className="section-title-wrap">
-            <p className="section-eyebrow">GitHub</p>
             <h2>Featured GitHub Repositories</h2>
           </div>
           {githubUsername === "your-username" ? (
@@ -1314,7 +1305,6 @@ function App() {
 
         <section className="section reveal" id="contact">
           <div className="section-title-wrap">
-            <p className="section-eyebrow">Contact</p>
             <h2>Contact</h2>
           </div>
           <div className="contact-card">
