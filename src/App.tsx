@@ -738,7 +738,7 @@ function App() {
             </div>
             <figure className="hero-portrait-card">
               <img
-                src={resolveAssetPath("/media/headshots/portrait.jpg")}
+                src={resolveAssetPath("/media/headshots/portrait.png")}
                 alt="Portrait of Jiwei Zhou"
                 loading="eager"
               />
