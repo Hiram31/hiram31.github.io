@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
 
 :root {
   --bg: #f8f8f5;
@@ -558,6 +558,19 @@ main {
 .proceeding-content .card-note {
   margin: 0;
   color: #1d3949;
+}
+
+.publication-self-author {
+  color: var(--accent);
+  font-weight: 700;
+  padding-inline: 0.04em;
+  background: linear-gradient(
+    to bottom,
+    transparent 62%,
+    var(--accent-soft) 62%,
+    var(--accent-soft) 92%,
+    transparent 92%
+  );
 }
 
 .interactive-card-link {

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { githubUsername, profile, selectedSoftware } from "./data/profile";
 
 type GitHubRepo = {
@@ -72,6 +72,17 @@ type MediaCoverageYearGroup = {
 
 const isExternalHref = (href: string | undefined) =>
   typeof href === "string" && href.startsWith("http");
+
+const formatPublicationCitation = (citation: string) =>
+  citation.split(/(Zhou, J\.)/g).map((part, index) =>
+    part === "Zhou, J." ? (
+      <strong className="publication-self-author" key={`author-${index}`}>
+        {part}
+      </strong>
+    ) : (
+      <Fragment key={`citation-${index}`}>{part}</Fragment>
+    )
+  );
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -931,7 +942,9 @@ function App() {
                         rel="noreferrer"
                         className="proceeding-content timeline-card interactive-card-link"
                       >
-                        <p className="card-note">{item.citation}</p>
+                        <p className="card-note">
+                          {formatPublicationCitation(item.citation)}
+                        </p>
                         <span className="card-link-icon repo-link-arrow" aria-hidden="true">
                           View
                         </span>
@@ -958,14 +971,18 @@ function App() {
                           rel="noreferrer"
                           className="proceeding-content timeline-card interactive-card-link"
                         >
-                          <p className="card-note">{item.citation}</p>
+                          <p className="card-note">
+                            {formatPublicationCitation(item.citation)}
+                          </p>
                           <span className="card-link-icon repo-link-arrow" aria-hidden="true">
                             View
                           </span>
                         </a>
                       ) : (
                         <div className="proceeding-content timeline-card">
-                          <p className="card-note">{item.citation}</p>
+                          <p className="card-note">
+                            {formatPublicationCitation(item.citation)}
+                          </p>
                           {item.status ? (
                             <span className="card-status-pill">{item.status}</span>
                           ) : null}

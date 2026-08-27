@@ -427,6 +427,11 @@ export const profile = {
   conferenceProceedings: [
     {
       citation:
+        'Zhou, J. and Camba, J. D. "EngDraw-Annotator: An AI-Assisted Interactive System for Evidence-Linked Engineering Drawing Annotation." CIRPE 2026.',
+      status: "Accepted"
+    },
+    {
+      citation:
         "Zhou, J., Camba, J. D., Company, P., and Contero, M. (2026). \"Drawing-Checker: A Vision RAG Framework for Automated Comparison of Engineering Drawings.\" Procedia CIRP, 142, 127-132.",
       href: "https://doi.org/10.1016/j.procir.2026.05.235"
     },
@@ -490,11 +495,6 @@ export const profile = {
     {
       title:
         "From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education",
-      status: "Under Review"
-    },
-    {
-      title:
-        "EngDraw-Annotator: An AI-Assisted Interactive System for Evidence-Linked Engineering Drawing Annotation",
       status: "Under Review"
     },
     {
