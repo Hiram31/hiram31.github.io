@@ -443,7 +443,7 @@ export const profile = {
     {
       citation:
         "Zhou, J. and Camba, J. D. \"EngDraw-Extractor: A Multi-Agent System for Information Extraction from 2D Engineering Drawings.\" IDETC-CIE 2026.",
-      status: "Accepted"
+      status: "Presented"
     },
     {
       citation:
