@@ -497,10 +497,12 @@ export const profile = {
         "From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education",
       status: "Under Review"
     },
+  ] as ManuscriptItem[],
+  manuscriptsSubmitted: [
     {
       title:
         "CADThread: A Dataset Linking Parametric CAD, 3D Geometry, and Engineering Drawings with a Drawing-to-CAD Benchmark",
-      status: "Under Review"
+      status: "Submitted"
     }
   ] as ManuscriptItem[],
   manuscriptsInPreparation: [
@@ -767,6 +769,7 @@ export const profile = {
         "IEEE Transactions on Computational Social Systems",
         "Image and Vision Computing",
         "International Journal of Information Management Data Insights",
+        "Journal of Industrial Information Integration",
         "Results in Engineering",
         "SoftwareX",
         "Transactions on Graphics"

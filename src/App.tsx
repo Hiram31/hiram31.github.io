@@ -1017,6 +1017,21 @@ function App() {
                 ))}
               </ul>
             </article>
+            <article className="timeline-card manuscript-card manuscript-card-submitted">
+              <header className="manuscript-card-head">
+                <h3>Submitted</h3>
+                <span className="card-status-pill manuscript-card-count">
+                  {profile.manuscriptsSubmitted.length}
+                </span>
+              </header>
+              <ul className="manuscript-list">
+                {profile.manuscriptsSubmitted.map((item) => (
+                  <li key={item.title} className="manuscript-item">
+                    <p className="manuscript-line manuscript-title">{item.title}</p>
+                  </li>
+                ))}
+              </ul>
+            </article>
             <article className="timeline-card manuscript-card manuscript-card-prep">
               <header className="manuscript-card-head">
                 <h3>In Preparation</h3>
