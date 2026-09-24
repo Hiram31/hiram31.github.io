@@ -30,7 +30,7 @@ type ProceedingWithYear = {
 
 type JournalArticleWithYear = {
   citation: string;
-  href: string;
+  href?: string;
   inferredYear: {
     value: number;
     label: string;
@@ -936,19 +936,27 @@ function App() {
                 <div className="proceeding-group-items">
                   {group.items.map((item) => (
                     <article key={item.citation} className="proceeding-item">
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="proceeding-content timeline-card interactive-card-link"
-                      >
-                        <p className="card-note">
-                          {formatPublicationCitation(item.citation)}
-                        </p>
-                        <span className="card-link-icon repo-link-arrow" aria-hidden="true">
-                          View
-                        </span>
-                      </a>
+                      {isExternalHref(item.href) ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="proceeding-content timeline-card interactive-card-link"
+                        >
+                          <p className="card-note">
+                            {formatPublicationCitation(item.citation)}
+                          </p>
+                          <span className="card-link-icon repo-link-arrow" aria-hidden="true">
+                            View
+                          </span>
+                        </a>
+                      ) : (
+                        <div className="proceeding-content timeline-card">
+                          <p className="card-note">
+                            {formatPublicationCitation(item.citation)}
+                          </p>
+                        </div>
+                      )}
                     </article>
                   ))}
                 </div>

@@ -43,7 +43,7 @@ export type PublicationItem = {
 
 export type JournalArticleItem = {
   citation: string;
-  href: string;
+  href?: string;
 };
 
 export type HighlightStat = {
@@ -395,6 +395,10 @@ export const profile = {
   journalArticles: [
     {
       citation:
+        "Gupta, D., Camba, J. D., Fuerst, T., and Zhou, J. (2026, in press). From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education. ASEE Computers in Education."
+    },
+    {
+      citation:
         "Zhou, J., Camba, J. D., Company, P. (2026). CADialogue: A Multimodal LLM-Powered Conversational Assistant for Intuitive Parametric CAD Modeling. Computer-Aided Design, 191, 104006.",
       href: "https://doi.org/10.1016/j.cad.2025.104006"
     },
@@ -491,12 +495,7 @@ export const profile = {
       title:
         "Human–AI Co-Design from Visual Requirements to Physical Validation: A Parametric Hydroponic Adapter Case Study",
       status: "Under Review"
-    },
-    {
-      title:
-        "From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education",
-      status: "Under Review"
-    },
+    }
   ] as ManuscriptItem[],
   manuscriptsSubmitted: [
     {
