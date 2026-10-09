@@ -287,6 +287,7 @@ export const profile = {
       summary:
         "Introduces a vision RAG pipeline for automated engineering drawing comparison, combining YOLO view detection, CLIP matching, and multimodal LLM reasoning to improve localized discrepancy detection.",
       href: "https://doi.org/10.1016/j.procir.2026.05.235",
+      codeHref: "https://github.com/Hiram31/Drawing-Checker",
       tags: ["Drawing Comparison", "Vision RAG", "Engineering Drawings", "View Matching"],
       media: [
         {
