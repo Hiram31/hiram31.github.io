@@ -396,7 +396,8 @@ export const profile = {
   journalArticles: [
     {
       citation:
-        "Gupta, D., Camba, J. D., Fuerst, T., and Zhou, J. (2026, in press). From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education. ASEE Computers in Education."
+        "Gupta, D., Camba, J. D., Fuerst, T., and Zhou, J. (2026). From Queries to Conversations: Exploring AI-Based Virtual Assistant Adoption, Usability, and Impact in Engineering Education. ASEE Computers in Education, 15(4).",
+      href: "https://doi.org/10.18260/B4D7-9A-19836"
     },
     {
       citation:
@@ -433,7 +434,7 @@ export const profile = {
     {
       citation:
         'Zhou, J. and Camba, J. D. "EngDraw-Annotator: An AI-Assisted Interactive System for Evidence-Linked Engineering Drawing Annotation." CIRPE 2026.',
-      status: "Accepted"
+      status: "Presented"
     },
     {
       citation:
@@ -515,7 +516,24 @@ export const profile = {
   ] as ManuscriptItem[],
   conferencePresentations: [
     {
-      event: "MSEC 2026 Manufacturing Science and Engineering Conference",
+      event: "14th CIRP Global Web Conference (CIRPe 2026)",
+      title:
+        "EngDraw-Annotator: An AI-Assisted Interactive System for Evidence-Linked Engineering Drawing Annotation",
+      location: "Nanyang Technological University, Singapore",
+      year: "2026",
+      note: "Remote presentation"
+    },
+    {
+      event:
+        "ASME 2026 International Design Engineering Technical Conferences and Computers and Information in Engineering Conference (IDETC-CIE 2026)",
+      title:
+        "EngDraw-Extractor: A Multi-Agent System for Information Extraction from 2D Engineering Drawings",
+      location: "Houston, Texas, USA",
+      year: "2026",
+      note: "Oral presentation"
+    },
+    {
+      event: "ASME MSEC 2026 Manufacturing Science and Engineering Conference",
       title:
         "EngDraw-VQA: An Agent-Based Framework for Automated Visual Question Answering Generation From Engineering Drawings",
       location: "Penn State University – State College, Pennsylvania, USA",
