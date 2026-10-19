@@ -213,7 +213,8 @@ export const profile = {
         "Conduct interdisciplinary research in applied AI to drive innovation in engineering design, smart manufacturing, and technology education.",
         "Lead deployment of AI-powered vision systems in IoT-enabled smart appliances for real-time crop monitoring and autonomous decision-making.",
         "Collaborate across hardware and software teams to design cyber-physical prototypes integrating imaging sensors, edge AI, and cloud analytics.",
-        "Develop and optimize machine learning and deep learning algorithms for computer vision hardware and software."
+        "Develop and optimize machine learning and deep learning algorithms for computer vision hardware and software.",
+        "Contribute to development of a USDA NIFA SBIR proposal (in preparation)."
       ],
       stack: ["Computer Vision", "Deep Learning", "IoT", "Edge-to-Cloud AI", "Precision Agriculture"]
     },
