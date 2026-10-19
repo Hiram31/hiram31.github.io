@@ -214,7 +214,7 @@ export const profile = {
         "Lead deployment of AI-powered vision systems in IoT-enabled smart appliances for real-time crop monitoring and autonomous decision-making.",
         "Collaborate across hardware and software teams to design cyber-physical prototypes integrating imaging sensors, edge AI, and cloud analytics.",
         "Develop and optimize machine learning and deep learning algorithms for computer vision hardware and software.",
-        "Contribute to development of a USDA NIFA SBIR proposal (in preparation)."
+        "Develop research proposals to secure external funding for research and development."
       ],
       stack: ["Computer Vision", "Deep Learning", "IoT", "Edge-to-Cloud AI", "Precision Agriculture"]
     },
@@ -742,6 +742,12 @@ export const profile = {
       source:
         "Wabash Heartland Innovation Network (Grant No. 4019008000 / 8000084103)",
       details: "Research support during work at Purdue University."
+    }
+  ] as FundingItem[],
+  proposalsInPreparation: [
+    {
+      source: "USDA NIFA SBIR",
+      details: "Proposed Principal Investigator (PI), Heliponix LLC."
     }
   ] as FundingItem[],
   service: [

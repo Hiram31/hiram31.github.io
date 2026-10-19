@@ -1156,6 +1156,14 @@ function App() {
                   </li>
                 ))}
               </ul>
+              <h4 className="card-subheading">Proposals in Preparation</h4>
+              <ul>
+                {profile.proposalsInPreparation.map((proposal) => (
+                  <li key={proposal.source}>
+                    {proposal.source} | {proposal.details}
+                  </li>
+                ))}
+              </ul>
               <h3 className="card-subheading">Awards and Honors</h3>
               <ul>
                 {profile.awards.map((award) => (
