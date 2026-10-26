@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useId, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { githubUsername, profile, selectedSoftware } from "./data/profile";
 
 type GitHubRepo = {
@@ -269,12 +269,70 @@ const profileLinkIconByLabel: Record<string, string> = {
   cv: "/media/icons/cv.svg"
 };
 
+// Match the existing phone layout breakpoint and update when the viewport changes.
+const phoneViewportQuery = "(max-width: 640px)";
+const getPhoneViewportSnapshot = () => window.matchMedia(phoneViewportQuery).matches;
+const subscribeToPhoneViewport = (onChange: () => void) => {
+  const query = window.matchMedia(phoneViewportQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+
+function CollapsibleList({ title, count, visibleCount = 1, hasMore, sectionHeading = false, children }: {
+  title: string;
+  count?: number;
+  visibleCount?: number;
+  hasMore?: boolean;
+  sectionHeading?: boolean;
+  children: (expanded: boolean) => ReactNode;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const isPhone = useSyncExternalStore(subscribeToPhoneViewport, getPhoneViewportSnapshot, () => false);
+  const contentId = useId();
+  const listRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div className={`list-collapse${sectionHeading ? " list-collapse-section" : ""}`} ref={listRef}>
+      <div className="list-collapse-heading">
+        {sectionHeading ? <h2>{title}</h2> : <h3 className="subsection-title">{title}</h3>}
+        {count !== undefined ? <span className="list-collapse-count">({count})</span> : null}
+      </div>
+      <div id={contentId}>{children(!isPhone || expanded)}</div>
+      {isPhone && (hasMore ?? (count === undefined || count > visibleCount)) ? (
+        <button type="button" className="list-collapse-toggle"
+          aria-expanded={expanded} aria-controls={contentId}
+          aria-label={`${expanded ? "Show fewer" : "Show all"} ${title.toLowerCase()}`}
+          onClick={() => {
+            if (expanded && listRef.current && listRef.current.getBoundingClientRect().top < 0) {
+              listRef.current.scrollIntoView({ block: "start", behavior: "instant" });
+            }
+            setExpanded(!expanded);
+          }}>
+          {expanded ? "Show less" : `Show all${count !== undefined ? ` (${count})` : ""}`}
+          <span className="list-collapse-chevron" aria-hidden="true" />
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
+// Limit entries across year boundaries while retaining the original year headings.
+function previewYearGroups<T>(groups: { yearLabel: string; items: T[] }[], limit: number) {
+  let remaining = limit;
+  return groups.flatMap((group) => {
+    const items = group.items.slice(0, remaining);
+    remaining -= items.length;
+    return items.length ? [{ ...group, items }] : [];
+  });
+}
+
 function App() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [repoError, setRepoError] = useState("");
   const [loadingRepos, setLoadingRepos] = useState(true);
   const [activePreview, setActivePreview] = useState<MediaPreview | null>(null);
   const [mapWidgetLoaded, setMapWidgetLoaded] = useState(false);
+
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -780,11 +838,10 @@ function App() {
         </section>
 
         <section className="section reveal" id="education">
-          <div className="section-title-wrap">
-            <h2>Education</h2>
-          </div>
+          <CollapsibleList title="Education" count={profile.education.length} sectionHeading>
+          {(expanded) => (
           <div className="cv-timeline education-timeline">
-            {educationByMostRecent.map((item) => (
+            {educationByMostRecent.slice(0, expanded ? undefined : 1).map((item) => (
               <article key={`${item.degree}-${item.period}`} className="cv-entry">
                 <p className="cv-date">{item.period}</p>
                 <span className="cv-track-node" aria-hidden="true"></span>
@@ -802,18 +859,19 @@ function App() {
               </article>
             ))}
           </div>
+          )}
+          </CollapsibleList>
         </section>
 
         <section className="section reveal" id="appointments">
-          <div className="section-title-wrap">
-            <h2>Appointments</h2>
-          </div>
+          <CollapsibleList title="Appointments" count={profile.appointments.length} sectionHeading>
+          {(expanded) => (
           <div
             className={`cv-timeline appointments-timeline${
-              appointmentsByMostRecent.length <= 1 ? " cv-timeline-single" : ""
+              (expanded ? appointmentsByMostRecent.length : 1) <= 1 ? " cv-timeline-single" : ""
             }`}
           >
-            {appointmentsByMostRecent.map((item) => (
+            {appointmentsByMostRecent.slice(0, expanded ? undefined : 1).map((item) => (
               <article key={`${item.role}-${item.period}`} className="cv-entry">
                 <p className="cv-date">{item.period}</p>
                 <span className="cv-track-node" aria-hidden="true"></span>
@@ -838,6 +896,8 @@ function App() {
               </article>
             ))}
           </div>
+          )}
+          </CollapsibleList>
         </section>
 
         <section className="section reveal" id="publications">
@@ -845,9 +905,10 @@ function App() {
             <h2>Publications</h2>
           </div>
 
-          <h3 className="subsection-title">Featured Publications</h3>
+          <CollapsibleList title="Featured Publications" count={profile.publications.length} visibleCount={2}>
+          {(expanded) => (
           <div className="publication-list">
-            {profile.publications.map((paper) => (
+            {profile.publications.slice(0, expanded ? undefined : 2).map((paper) => (
               <article key={paper.title} className="paper-card publication-card">
                 <div className="paper-head">
                   <p>
@@ -928,9 +989,13 @@ function App() {
             ))}
           </div>
 
-          <h3 className="subsection-title">Journal Articles</h3>
+          )}
+          </CollapsibleList>
+
+          <CollapsibleList title="Journal Articles" count={profile.journalArticles.length} visibleCount={2}>
+          {(expanded) => (
           <div className="proceedings-list">
-            {journalArticlesByYear.map((group) => (
+            {previewYearGroups(journalArticlesByYear, expanded ? Infinity : 2).map((group) => (
               <section key={`journals-${group.yearLabel}`} className="proceeding-group">
                 <p className="proceeding-year">{group.yearLabel}</p>
                 <div className="proceeding-group-items">
@@ -964,9 +1029,13 @@ function App() {
             ))}
           </div>
 
-          <h3 className="subsection-title">Peer-Reviewed Conference Proceedings</h3>
+          )}
+          </CollapsibleList>
+
+          <CollapsibleList title="Peer-Reviewed Conference Proceedings" count={profile.conferenceProceedings.length} visibleCount={2}>
+          {(expanded) => (
           <div className="proceedings-list">
-            {conferenceProceedingsByYear.map((group) => (
+            {previewYearGroups(conferenceProceedingsByYear, expanded ? Infinity : 2).map((group) => (
               <section key={`proceedings-${group.yearLabel}`} className="proceeding-group">
                 <p className="proceeding-year">{group.yearLabel}</p>
                 <div className="proceeding-group-items">
@@ -1003,7 +1072,12 @@ function App() {
             ))}
           </div>
 
-          <h3 className="subsection-title">Active Manuscripts</h3>
+          )}
+          </CollapsibleList>
+
+          <CollapsibleList title="Active Manuscripts" count={profile.manuscriptsUnderReview.length + profile.manuscriptsSubmitted.length + profile.manuscriptsInPreparation.length}
+            hasMore={[profile.manuscriptsUnderReview, profile.manuscriptsSubmitted, profile.manuscriptsInPreparation].some((items) => items.length > 1)}>
+          {(expanded) => (
           <div className="split-grid">
             <article className="timeline-card manuscript-card manuscript-card-review">
               <header className="manuscript-card-head">
@@ -1013,7 +1087,7 @@ function App() {
                 </span>
               </header>
               <ul className="manuscript-list">
-                {profile.manuscriptsUnderReview.map((item) => (
+                {profile.manuscriptsUnderReview.slice(0, expanded ? undefined : 1).map((item) => (
                   <li key={item.title} className="manuscript-item">
                     <div className="manuscript-copy">
                       <p className="manuscript-line manuscript-title">{item.title}</p>
@@ -1033,7 +1107,7 @@ function App() {
                 </span>
               </header>
               <ul className="manuscript-list">
-                {profile.manuscriptsSubmitted.map((item) => (
+                {profile.manuscriptsSubmitted.slice(0, expanded ? undefined : 1).map((item) => (
                   <li key={item.title} className="manuscript-item">
                     <p className="manuscript-line manuscript-title">{item.title}</p>
                   </li>
@@ -1048,7 +1122,7 @@ function App() {
                 </span>
               </header>
               <ul className="manuscript-list">
-                {profile.manuscriptsInPreparation.map((item) => (
+                {profile.manuscriptsInPreparation.slice(0, expanded ? undefined : 1).map((item) => (
                   <li key={item.title} className="manuscript-item">
                     <p className="manuscript-line">
                       <span className="manuscript-title">{item.title}</span>
@@ -1060,6 +1134,8 @@ function App() {
               </ul>
             </article>
           </div>
+          )}
+          </CollapsibleList>
         </section>
 
         <section className="section reveal" id="talks">
@@ -1067,9 +1143,10 @@ function App() {
             <h2>Talks</h2>
           </div>
 
-          <h3 className="subsection-title">Conference Presentations</h3>
+          <CollapsibleList title="Conference Presentations" count={profile.conferencePresentations.length} visibleCount={2}>
+          {(expanded) => (
           <div className="proceedings-list">
-            {conferencePresentationsByYear.map((group) => (
+            {previewYearGroups(conferencePresentationsByYear, expanded ? Infinity : 2).map((group) => (
               <section
                 key={`presentations-${group.yearLabel}`}
                 className="proceeding-group"
@@ -1096,9 +1173,13 @@ function App() {
             ))}
           </div>
 
-          <h3 className="subsection-title">Public Speaking and Outreach</h3>
+          )}
+          </CollapsibleList>
+
+          <CollapsibleList title="Public Speaking and Outreach" count={profile.outreach.length}>
+          {(expanded) => (
           <div className="proceedings-list">
-            {outreachByYear.map((group) => (
+            {previewYearGroups(outreachByYear, expanded ? Infinity : 1).map((group) => (
               <section key={`outreach-${group.yearLabel}`} className="proceeding-group">
                 <p className="proceeding-year">{group.yearLabel}</p>
                 <div className="proceeding-group-items">
@@ -1123,12 +1204,13 @@ function App() {
               </section>
             ))}
           </div>
+          )}
+          </CollapsibleList>
         </section>
 
         <section className="section reveal" id="service">
-          <div className="section-title-wrap">
-            <h2>Service, Funding, and Awards</h2>
-          </div>
+          <CollapsibleList title="Service, Funding, and Awards" sectionHeading>
+          {(expanded) => (
           <div className="split-grid">
             <article className="timeline-card">
               <header>
@@ -1138,7 +1220,7 @@ function App() {
                 <div key={group.category} className="service-group">
                   <p className="group-title">{group.category}</p>
                   <ul>
-                    {group.entries.map((entry) => (
+                    {group.entries.slice(0, expanded ? undefined : 3).map((entry) => (
                       <li key={entry}>{entry}</li>
                     ))}
                   </ul>
@@ -1150,7 +1232,7 @@ function App() {
                 <h3>Funding and Grants</h3>
               </header>
               <ul>
-                {profile.funding.map((grant) => (
+                {profile.funding.slice(0, expanded ? undefined : 1).map((grant) => (
                   <li key={grant.source}>
                     {grant.source} | {grant.details}
                   </li>
@@ -1166,7 +1248,7 @@ function App() {
               </ul>
               <h3 className="card-subheading">Awards and Honors</h3>
               <ul>
-                {profile.awards.map((award) => (
+                {profile.awards.slice(0, expanded ? undefined : 1).map((award) => (
                   <li key={`${award.name}-${award.year}`}>
                     {award.name} | {award.organization} ({award.year})
                   </li>
@@ -1174,6 +1256,8 @@ function App() {
               </ul>
             </article>
           </div>
+          )}
+          </CollapsibleList>
         </section>
 
         <section className="section reveal" id="leadership">
@@ -1181,9 +1265,10 @@ function App() {
             <h2>Leadership, Certification, Teaching, and Media</h2>
           </div>
 
-          <h3 className="subsection-title">Leadership Experience</h3>
+          <CollapsibleList title="Leadership Experience" count={profile.leadership.length}>
+          {(expanded) => (
           <div className="cv-timeline">
-            {leadershipByMostRecent.map((item) => (
+            {leadershipByMostRecent.slice(0, expanded ? undefined : 1).map((item) => (
               <article key={`${item.role}-${item.period}`} className="cv-entry">
                 <p className="cv-date">{item.period}</p>
                 <span className="cv-track-node" aria-hidden="true"></span>
@@ -1204,9 +1289,13 @@ function App() {
             ))}
           </div>
 
-          <h3 className="subsection-title">Certification and Teaching Experience</h3>
+          )}
+          </CollapsibleList>
+
+          <CollapsibleList title="Certification and Teaching Experience" count={profile.certifications.length}>
+          {(expanded) => (
           <div className="cv-timeline">
-            {certificationsByMostRecent.map((item) => (
+            {certificationsByMostRecent.slice(0, expanded ? undefined : 1).map((item) => (
               <article key={`${item.title}-${item.period}`} className="cv-entry">
                 <p className="cv-date">
                   {item.kind === "Certification" ? `Awarded ${item.period}` : item.period}
@@ -1240,9 +1329,13 @@ function App() {
             ))}
           </div>
 
-          <h3 className="subsection-title">Media Coverage</h3>
+          )}
+          </CollapsibleList>
+
+          <CollapsibleList title="Media Coverage" count={profile.mediaCoverage.length}>
+          {(expanded) => (
           <div className="proceedings-list">
-            {mediaByYear.map((group) => (
+            {previewYearGroups(mediaByYear, expanded ? Infinity : 1).map((group) => (
               <section key={`media-${group.yearLabel}`} className="proceeding-group">
                 <p className="proceeding-year">{group.yearLabel}</p>
                 <div className="proceeding-group-items">
@@ -1280,6 +1373,8 @@ function App() {
               </section>
             ))}
           </div>
+          )}
+          </CollapsibleList>
         </section>
 
         <section className="section reveal" id="github">
