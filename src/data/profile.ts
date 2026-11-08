@@ -470,7 +470,7 @@ export const profile = {
     {
       citation:
         "Zhou, J., Camba, J. D., Company, P., Contero, M. \"EngDraw-VQA: An Agent-Based Framework for Automated Visual Question Answering Generation From Engineering Drawings.\" Manufacturing Science and Engineering Conference (MSEC 2026).",
-      status: "Presented"
+      href: "https://doi.org/10.1115/MSEC2026-182887"
     },
     {
       citation:
