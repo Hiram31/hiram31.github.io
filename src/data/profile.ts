@@ -261,6 +261,26 @@ export const profile = {
   publications: [
     {
       title:
+        "EngDraw-VQA: An Agent-Based Framework for Automated Visual Question Answering Generation From Engineering Drawings",
+      venue: "ASME MSEC",
+      year: "2026",
+      summary:
+        "Presents a two-stage multi-agent pipeline that generates open-ended and multiple-choice questions from engineering drawings, with correctness checks and iterative distractor refinement. Produces 620 open-ended and 620 aligned multiple-choice questions from 155 drawings across view, annotation, feature, and function reasoning, and benchmarks ten vision-language models.",
+      href: "https://doi.org/10.1115/MSEC2026-182887",
+      tags: ["Visual Question Answering", "Multi-Agent Systems", "Engineering Drawings", "Engineering Education"],
+      media: [
+        {
+          src: "/media/publications/engdraw-vqa-architecture.png",
+          alt: "EngDraw-VQA two-stage architecture for open-ended question generation and multiple-choice conversion through agent evaluation and distractor refinement."
+        },
+        {
+          src: "/media/publications/engdraw-vqa-examples.png",
+          alt: "Figure 3: EngDraw-VQA-generated multiple-choice questions across view, annotation, feature, and function categories, with engineering drawings, correct answers, distractors, and GPT-generated rationales."
+        }
+      ]
+    },
+    {
+      title:
         "CADialogue: A Multimodal LLM-Powered Conversational Assistant for Intuitive Parametric CAD Modeling",
       venue: "Computer-Aided Design",
       year: "2026",

@@ -278,18 +278,21 @@ const subscribeToPhoneViewport = (onChange: () => void) => {
   return () => query.removeEventListener("change", onChange);
 };
 
-function CollapsibleList({ title, count, visibleCount = 1, hasMore, sectionHeading = false, children }: {
+function CollapsibleList({ title, count, visibleCount = 1, desktopVisibleCount, hasMore, sectionHeading = false, children }: {
   title: string;
   count?: number;
   visibleCount?: number;
+  desktopVisibleCount?: number;
   hasMore?: boolean;
   sectionHeading?: boolean;
-  children: (expanded: boolean) => ReactNode;
+  children: (expanded: boolean, previewCount: number) => ReactNode;
 }) {
   const [expanded, setExpanded] = useState(false);
   const isPhone = useSyncExternalStore(subscribeToPhoneViewport, getPhoneViewportSnapshot, () => false);
   const contentId = useId();
   const listRef = useRef<HTMLDivElement>(null);
+  const canCollapse = isPhone || desktopVisibleCount !== undefined;
+  const previewCount = isPhone ? visibleCount : desktopVisibleCount ?? visibleCount;
 
   return (
     <div className={`list-collapse${sectionHeading ? " list-collapse-section" : ""}`} ref={listRef}>
@@ -297,8 +300,8 @@ function CollapsibleList({ title, count, visibleCount = 1, hasMore, sectionHeadi
         {sectionHeading ? <h2>{title}</h2> : <h3 className="subsection-title">{title}</h3>}
         {count !== undefined ? <span className="list-collapse-count">({count})</span> : null}
       </div>
-      <div id={contentId}>{children(!isPhone || expanded)}</div>
-      {isPhone && (hasMore ?? (count === undefined || count > visibleCount)) ? (
+      <div id={contentId}>{children(!canCollapse || expanded, previewCount)}</div>
+      {canCollapse && (hasMore ?? (count === undefined || count > previewCount)) ? (
         <button type="button" className="list-collapse-toggle"
           aria-expanded={expanded} aria-controls={contentId}
           aria-label={`${expanded ? "Show fewer" : "Show all"} ${title.toLowerCase()}`}
@@ -905,10 +908,10 @@ function App() {
             <h2>Publications</h2>
           </div>
 
-          <CollapsibleList title="Featured Publications" count={profile.publications.length} visibleCount={2}>
-          {(expanded) => (
+          <CollapsibleList title="Featured Publications" count={profile.publications.length} visibleCount={2} desktopVisibleCount={5}>
+          {(expanded, previewCount) => (
           <div className="publication-list">
-            {profile.publications.slice(0, expanded ? undefined : 2).map((paper) => (
+            {profile.publications.slice(0, expanded ? undefined : previewCount).map((paper) => (
               <article key={paper.title} className="paper-card publication-card">
                 <div className="paper-head">
                   <p>
