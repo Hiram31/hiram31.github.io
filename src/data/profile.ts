@@ -465,7 +465,7 @@ export const profile = {
     {
       citation:
         "Zhou, J. and Camba, J. D. \"MAS-DFM: A Traceable Multi-Agent Framework for Drawing-Based Manufacturability Analysis.\" 2026 8th International Conference on Industry of the Future and Smart Manufacturing (ISM).",
-      status: "Accepted"
+      status: "Presented"
     },
     {
       citation:
@@ -537,6 +537,15 @@ export const profile = {
   ] as ManuscriptItem[],
   conferencePresentations: [
     {
+      event:
+        "2026 8th International Conference on Industry of the Future and Smart Manufacturing (ISM)",
+      title:
+        "MAS-DFM: A Traceable Multi-Agent Framework for Drawing-Based Manufacturability Analysis",
+      location: "Padua & Venice, Italy",
+      year: "2026",
+      note: "Remote presentation"
+    },
+    {
       event: "14th CIRP Global Web Conference (CIRPe 2026)",
       title:
         "EngDraw-Annotator: An AI-Assisted Interactive System for Evidence-Linked Engineering Drawing Annotation",
@@ -551,14 +560,15 @@ export const profile = {
         "EngDraw-Extractor: A Multi-Agent System for Information Extraction from 2D Engineering Drawings",
       location: "Houston, Texas, USA",
       year: "2026",
-      note: "Oral presentation"
+      note: "In-person presentation"
     },
     {
       event: "ASME MSEC 2026 Manufacturing Science and Engineering Conference",
       title:
         "EngDraw-VQA: An Agent-Based Framework for Automated Visual Question Answering Generation From Engineering Drawings",
       location: "Penn State University – State College, Pennsylvania, USA",
-      year: "2026"
+      year: "2026",
+      note: "In-person presentation"
     },
     {
       event:
@@ -574,7 +584,8 @@ export const profile = {
       title:
         "Integrating Artificial Intelligence in Plant Growth Monitoring for Innovative Rotary Aeroponic Systems",
       location: "Donald Danforth Plant Science Center – Olivette, MO, USA",
-      year: "2025"
+      year: "2025",
+      note: "In-person presentation"
     },
     {
       event: "10th International Conference on Mechanics, Materials and Manufacturing (ICMMM)",
@@ -596,7 +607,8 @@ export const profile = {
       event: "MSEC 2022 Manufacturing Science and Engineering Conference",
       title: "An Approach to Extend the Digital Thread from Requirements to Model Geometry",
       location: "Purdue University – West Lafayette, IN, USA",
-      year: "2022"
+      year: "2022",
+      note: "In-person presentation"
     },
     {
       event: "18th International Conference on Product Lifecycle Management (PLM 2021)",

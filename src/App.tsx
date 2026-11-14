@@ -697,15 +697,8 @@ function App() {
     () =>
       profile.conferencePresentations
         .slice()
-        .sort((a, b) => {
-          const yearDelta =
-            Number.parseInt(b.year, 10) - Number.parseInt(a.year, 10);
-          if (yearDelta !== 0) {
-            return yearDelta;
-          }
-
-          return a.event.localeCompare(b.event);
-        })
+        // Keep the newest-first profile order for presentations in the same year.
+        .sort((a, b) => Number.parseInt(b.year, 10) - Number.parseInt(a.year, 10))
         .reduce<PresentationYearGroup[]>((groups, item) => {
           const currentGroup = groups[groups.length - 1];
           if (currentGroup && currentGroup.yearLabel === item.year) {
