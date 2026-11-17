@@ -776,10 +776,14 @@ export const profile = {
       details: "Research support during work at Purdue University."
     }
   ] as FundingItem[],
-  proposalsInPreparation: [
+  proposalsSubmitted: [
     {
-      source: "USDA NIFA SBIR",
-      details: "Proposed Principal Investigator (PI), Heliponix LLC."
+      source: "U.S. Department of Agriculture, National Institute of Food and Agriculture (USDA NIFA) SBIR Phase II",
+      details: "Principal Investigator (PI), Heliponix LLC."
+    },
+    {
+      source: "U.S. Environmental Protection Agency (EPA) SBIR Phase I",
+      details: "Lead author of the technical narrative, Heliponix LLC."
     }
   ] as FundingItem[],
   service: [

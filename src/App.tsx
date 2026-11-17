@@ -1234,9 +1234,9 @@ function App() {
                   </li>
                 ))}
               </ul>
-              <h4 className="card-subheading">Proposals in Preparation</h4>
+              <h4 className="card-subheading">Submitted Proposals</h4>
               <ul>
-                {profile.proposalsInPreparation.map((proposal) => (
+                {profile.proposalsSubmitted.map((proposal) => (
                   <li key={proposal.source}>
                     {proposal.source} | {proposal.details}
                   </li>
